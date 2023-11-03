@@ -1,0 +1,17 @@
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Logica.deps.json
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Logica.runtimeconfig.json
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Logica.dll
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Logica.pdb
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Data.dll
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Data.pdb
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.csproj.AssemblyReference.cache
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.AssemblyInfoInputs.cache
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.AssemblyInfo.cs
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.csproj.CoreCompileInputs.cache
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.csproj.CopyComplete
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.dll
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\refint\RecetasDeCocina.Logica.dll
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.pdb
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.genruntimeconfig.cache
+C:\Users\Gabyy\source\repos\RecetasDeCocina\RecetasDeCocina.Logica\obj\Debug\net6.0\ref\RecetasDeCocina.Logica.dll
