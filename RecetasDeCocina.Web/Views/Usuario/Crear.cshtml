@@ -1,58 +1,45 @@
-﻿@model RecetasDeCocina.Data.Models.Usuario
-
+﻿@using RecetasDeCocina.Data.Models
+@model Usuario
 @{
-    ViewData["Title"] = "Crear";
+    ViewData["Title"] = "Registro de Usuario";
 }
 
-<h1>Crear</h1>
+<h2>@ViewData["Title"]</h2>
 
-<h4>Usuario</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Crear">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NombreDeUsuario" class="control-label"></label>
-                <input asp-for="NombreDeUsuario" class="form-control" />
-                <span asp-validation-for="NombreDeUsuario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Correo" class="control-label"></label>
-                <input asp-for="Correo" class="form-control" />
-                <span asp-validation-for="Correo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Contrasena" class="control-label"></label>
-                <input asp-for="Contrasena" class="form-control" />
-                <span asp-validation-for="Contrasena" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PreferenciasAlimentarias" class="control-label"></label>
-                <input asp-for="PreferenciasAlimentarias" class="form-control" />
-                <span asp-validation-for="PreferenciasAlimentarias" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AlimentosAlergicos" class="control-label"></label>
-                <input asp-for="AlimentosAlergicos" class="form-control" />
-                <span asp-validation-for="AlimentosAlergicos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RestriccionesAlimentarias" class="control-label"></label>
-                <input asp-for="RestriccionesAlimentarias" class="form-control" />
-                <span asp-validation-for="RestriccionesAlimentarias" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<form asp-action="Crear" method="post">
+    <div class="form-group">
+        <label asp-for="NombreDeUsuario">Nombre de Usuario</label>
+        <input asp-for="NombreDeUsuario" class="form-control" />
+        <span asp-validation-for="NombreDeUsuario" class="text-danger"></span>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <div class="form-group">
+        <label asp-for="Correo">Correo Electrónico</label>
+        <input asp-for="Correo" class="form-control" />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Contrasena">Contraseña</label>
+        <input asp-for="Contrasena" type="password" class="form-control" />
+        <span asp-validation-for="Contrasena" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PreferenciasAlimentarias">Preferencias Alimentarias</label>
+        <select asp-for="PreferenciasAlimentarias" class="form-control">
+            <option value="EQUILIBRADA">Equilibrada</option>
+            <option value="VEGETARIANO">Vegetariano</option>
+            <option value="VEGANO">Vegano</option>
+            <option value="SIN_GLUTEN">Sin Gluten</option>
+            <option value="SIN_LACTOSA">Sin Lactosa</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="AlimentosAlergicos">Alimentos Alergicos</label>
+        <select asp-for="AlimentosAlergicos" class="form-control">
+            <option value="NINGUNO">Ninguno</option>
+            <option value="MANI">Maní</option>
+            <option value="MARISCOS">Mariscos</option>
+            <option value="LECHE">Leche</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
