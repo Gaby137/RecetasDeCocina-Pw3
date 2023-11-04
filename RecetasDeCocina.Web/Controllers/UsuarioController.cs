@@ -31,21 +31,16 @@ public class UsuarioController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Crear(IFormCollection collection)
+    public ActionResult Crear(Usuario usuario)
     {
         try
         {
-            var usuario = new Usuario()
+            if (ModelState.IsValid)
             {
-                NombreDeUsuario = collection["NombreDeUsuario"],
-                Correo = collection["Correo"],
-                Contrasena = collection["Contrasena"],
-                PreferenciasAlimentarias = collection["PreferenciasAlimentarias"],
-                AlimentosAlergicos = collection["AlimentosAlergicos"],
-                RestriccionesAlimentarias = collection["RestriccionesAlimentarias"]
-            };
-            db.Crear(usuario);
-            return RedirectToAction(nameof(Index));
+                db.Crear(usuario); // Supongamos que tienes un método "Crear" en tu base de datos que agrega un usuario a MongoDB
+                return RedirectToAction(nameof(Index));
+            }
+            return View(usuario);
         }
         catch
         {
