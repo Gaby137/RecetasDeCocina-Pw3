@@ -15,6 +15,7 @@ public interface IUsuarioCollection
     List<Usuario> Listar();
 
     Usuario ObtenerUsuarioPorId(string id);
+    Usuario BuscarPorCorreo(string correo);
 }
 
 
@@ -41,5 +42,14 @@ public class UsuarioCollection : IUsuarioCollection
     public Usuario ObtenerUsuarioPorId(string id)
     {
         throw new NotImplementedException();
+    }
+    public Usuario BuscarPorCorreo(string correo)
+    {
+        var filter = Builders<Usuario>.Filter.Eq(u => u.Correo, correo);
+
+        // Realizar la consulta en la base de datos
+        var usuario = Collection.Find(filter).FirstOrDefault();
+
+        return usuario;
     }
 }
