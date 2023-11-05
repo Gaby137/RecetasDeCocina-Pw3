@@ -33,9 +33,27 @@ public class RecetaCollection : IRecetaCollection
         Collection.InsertOneAsync(receta);
     }
 
-    List<Receta> IRecetaCollection.Listar()
+   /* List<Receta> IRecetaCollection.Listar()
     {
         var recetas = Collection.Find(new BsonDocument()).ToList();
         return recetas;
+    } */
+
+    public List<Receta> Listar()
+    {
+        var projection = Builders<Receta>.Projection
+            .Include(r => r.Titulo)
+            .Include(r => r.Descripcion)
+            .Include(r => r.ListarIngredientes); // Esto incluirá la lista completa de ingredientes
+
+        var recetas = Collection.Find(new BsonDocument())
+            .Project<Receta>(projection)
+            .ToList();
+
+        return recetas;
     }
+
+
+
+
 }

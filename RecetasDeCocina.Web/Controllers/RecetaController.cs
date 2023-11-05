@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RecetasDeCocina.Data.Models;
 using RecetasDeCocina.Data.Repositories;
 
@@ -43,7 +44,7 @@ public class RecetaController : Controller
         }
     }
 
-
+    /*
     public ActionResult Listar()
     {
         // Obtén la lista de ingredientes disponibles
@@ -52,10 +53,17 @@ public class RecetaController : Controller
         ViewBag.IngredientesDisponibles = ingredientesDisponibles;
         return View(db.Listar());
     }
+    */
+    public ActionResult Listar()
+    {
+        List<Receta> recetas = db.Listar();
+        return View(recetas);
+    } 
 
 
+   
 
-  
+
 
 
 

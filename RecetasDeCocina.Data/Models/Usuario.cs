@@ -1,4 +1,6 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.MongoDB;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
@@ -26,7 +28,7 @@ public enum AlimentosAlergicos
     LECHE
 }
 
-public  class Usuario
+public  class Usuario : IdentityUser
 {
     [BsonId]
     public ObjectId Id { get; set; }

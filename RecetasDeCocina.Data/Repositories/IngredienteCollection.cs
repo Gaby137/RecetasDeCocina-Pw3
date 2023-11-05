@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.EntityFrameworkCore;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using RecetasDeCocina.Data.Models;
 using System;
@@ -16,6 +17,8 @@ public interface IIngredienteCollection
     Ingrediente BuscarIngredienteConId(object id);
 
     List<Ingrediente> Listar();
+
+    List<Ingrediente> FiltrarPorReceta(object idReceta);
 }
 
 public class IngredienteCollection : IIngredienteCollection
@@ -42,6 +45,15 @@ public class IngredienteCollection : IIngredienteCollection
     {
         Collection.InsertOneAsync(ingrediente);
     }
+
+    public List<Ingrediente> FiltrarPorReceta(object idReceta)
+    {
+        var filter = Builders<Ingrediente>.Filter.Eq("RecetaId", idReceta); // Asumiendo que tengas un campo RecetaId en la colección de ingredientes para vincularlos a recetas
+        var ingredientesDeReceta = Collection.Find(filter).ToList();
+
+        return ingredientesDeReceta;
+    }
+
 
     public List<Ingrediente> Listar()
     {

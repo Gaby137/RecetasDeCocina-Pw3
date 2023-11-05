@@ -32,16 +32,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVkaWVudGVcTGlzdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/RecetasPersonalizadas/GenerarRecetasPersonalizadas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZXRhc1BlcnNvbmFsaXphZGFzXEdlbmVyYXJSZWNldGFzUGVyc29uYWxpemFkYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Receta/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZXRhXENyZWFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Receta/Listar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZXRhXExpc3Rhci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Receta/SeleccionarIngredientes.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZXRhXFNlbGVjY2lvbmFySW5ncmVkaWVudGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Shared/Error.cshtml]
