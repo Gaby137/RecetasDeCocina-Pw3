@@ -46,6 +46,10 @@ public class RecetaController : Controller
 
     public ActionResult Listar()
     {
+        // Obtén la lista de ingredientes disponibles
+        List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
+        // Pasa la lista de ingredientes disponibles a la vista utilizando ViewBag
+        ViewBag.IngredientesDisponibles = ingredientesDisponibles;
         return View(db.Listar());
     }
 
