@@ -1,0 +1,39 @@
+﻿@using RecetasDeCocina.Data.Models
+@model Receta
+@{
+    ViewData["Title"] = "Creacion de Receta";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Crear" method="post">
+    <div class="form-group">
+        <label asp-for="Titulo">Titulo</label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Descripcion">Descripcion</label>
+        <input asp-for="Descripcion" class="form-control" />
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Ingredientes">Ingredientes</label>
+        <ul>
+            @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+            {
+                <li>
+                    <input type="checkbox" name="ListarIngredientes" value="@ingrediente.Id" />
+                    @ingrediente.NombreDelIngrediente
+                </li>
+            }
+        </ul>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Crear Receta</button>
+</form>
+
+

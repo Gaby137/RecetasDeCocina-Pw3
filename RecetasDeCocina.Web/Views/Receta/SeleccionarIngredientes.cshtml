@@ -1,0 +1,27 @@
+﻿@using RecetasDeCocina.Data.Models
+@model Receta
+
+
+
+<h2>Seleccionar Ingredientes</h2>
+
+@using (Html.BeginForm("AgregarIngredientes", "Receta", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Titulo)
+    @Html.HiddenFor(model => model.Descripcion)
+
+    @foreach (var ingrediente in ViewData["IngredientesDisponibles"] as List<Ingrediente>)
+    {
+        <div>
+            <label>
+                @Html.CheckBox("ingredientesSeleccionados", false, new { value = ingrediente.Id })
+                @ingrediente.NombreDelIngrediente
+            </label>
+        </div>
+    }
+
+    <input type="submit" value="Agregar Ingredientes" />
+}
+
+
+

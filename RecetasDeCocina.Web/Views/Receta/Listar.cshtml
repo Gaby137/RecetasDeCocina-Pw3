@@ -1,0 +1,36 @@
+﻿@using RecetasDeCocina.Data.Models
+@model List<Receta>
+
+@{
+    ViewData["Title"] = "Listado de Recetas";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Ingredientes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var receta in Model)
+        {
+            <tr>
+                <td>@receta.Titulo</td>
+                <td>@receta.Descripcion</td>
+                <td>
+                    <ul>
+                        @foreach (var ingrediente in receta.ListarIngredientes)
+                        {
+                            <li>@ingrediente.NombreDelIngrediente</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
