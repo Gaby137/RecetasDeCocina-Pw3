@@ -20,12 +20,12 @@
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="ListaIngredientes" class="form-label">Ingredientes</label>
+                <label asp-for="ListaIngredientes" class="form-label d-none">Ingredientes</label>
                 @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
                 {
-                    <div>
+                    <div class=" form-check form-check-inline">
                         <label for="@ingrediente.Id">
-                            <input type="checkbox" name="ids" value="@ingrediente.Id" />
+                            <input type="checkbox" name="ids" value="@ingrediente.Id "  />
                             @ingrediente.Nombre
                         </label>
                     </div>

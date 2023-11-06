@@ -14,16 +14,29 @@
 
         <form action="/Receta/Listar" method="post">
             <div class="text-center">
-                <partial name="/Views/Shared/_ComboTipoDeComida.cshtml">
-                <partial name="/Views/Shared/_ComboPais.cshtml">
-                <partial name="/Views/Shared/_ComboDificultad.cshtml">
-                <partial name="/Views/Shared/_ComboIngrediente.cshtml">
-                <input type="submit" value="Filtrar"/>
+                <div class="row justify-content-center">
+                    <div class="form-group col-md-2">
+                        <partial name="/Views/Shared/_ComboTipoDeComida.cshtml">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <partial name="/Views/Shared/_ComboPais.cshtml">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <partial name="/Views/Shared/_ComboDificultad.cshtml">
+                    </div>
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <partial name="/Views/Shared/_ComboIngrediente.cshtml">
+                </div>
+
+                <input type="submit" value="Filtrar" class="btn btn-dark fw-bold text-light p-1 sing-in rounded w-25 mb-3" />
             </div>
         </form>
+
             <div class="form-horizontal">
-                    <table class="table">
-                        <thead>
+                <table class="table table-hover">
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Título</th>
                                 <th>Descripción</th>
@@ -59,5 +72,4 @@
             </div>
     </div>
 </div>
-
 
