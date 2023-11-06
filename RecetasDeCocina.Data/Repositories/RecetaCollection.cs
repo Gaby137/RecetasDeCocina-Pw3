@@ -13,7 +13,6 @@ public interface IRecetaCollection {
 
 public class RecetaCollection : IRecetaCollection
 {
-
     internal MongoDBRepository _repository = new MongoDBRepository();
     private IMongoCollection<Receta> Collection;
 
@@ -30,8 +29,7 @@ public class RecetaCollection : IRecetaCollection
 
     public List<Receta> Listar()
     {
-        var recetas = Collection.Find(new BsonDocument()).ToList();
-        return recetas;
+        return Collection.Find(new BsonDocument()).ToList();
     }
 
     public List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)

@@ -9,7 +9,6 @@
 
 <form action="/Receta/Listar" method="post">
     <div class="form-horizontal">
-        <h4>Sucursales</h4>
         <hr />
         <partial name="/Views/Shared/_ComboTipoDeComida.cshtml">
         <partial name="/Views/Shared/_ComboPais.cshtml">
@@ -34,10 +33,10 @@
                             <td>@receta.Descripcion</td>
                             <td>
                                 <ul>
-                                    @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+                                    @foreach (var ingrediente in @receta.ListaIngredientes)
                                     {
                                         <li>
-                                            @ingrediente.NombreDelIngrediente
+                                            @ingrediente.Nombre
                                         </li>
                                     }
                                 </ul>
