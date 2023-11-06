@@ -8,6 +8,8 @@ public interface IRecetaCollection {
     void Crear(Receta receta);
     List<Receta> Listar();
     List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad);
+    Receta BuscarRecetaPorId(ObjectId id);
+    List<Receta> ObtenerRecetasPorIds(List<ObjectId> recetaIds);
 }
 
 
@@ -54,5 +56,18 @@ public class RecetaCollection : IRecetaCollection
         }
 
         return recetas;
+    }
+    public Receta BuscarRecetaPorId(ObjectId id)
+    {
+        var filter = Builders<Receta>.Filter.Eq("_id", id);
+        var recetaEncontrado = Collection.Find(filter).FirstOrDefault();
+
+        return recetaEncontrado;
+    }
+    public List<Receta> ObtenerRecetasPorIds(List<ObjectId> recetaIds)
+    {
+        var recetaFilter = Builders<Receta>.Filter.In(r => r.Id, recetaIds);
+        var recetasFavoritas = Collection.Find(recetaFilter).ToList();
+        return recetasFavoritas;
     }
 }
