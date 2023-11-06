@@ -1,41 +1,46 @@
 ﻿@using RecetasDeCocina.Data.Models
 @model Ingrediente
 @{
-    ViewData["Title"] = "Registro de Ingrediente";
+    ViewData["Title"] = "Creación de Ingrediente";
 }
 
-<h2>@ViewData["Title"]</h2>
+<!--<h2>@ViewData["Title"]</h2>-->
+<div class="container w-50 my-5 px-0">
+    <div>
+        <h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+        <form asp-action="Crear" method="post">
+            <div class="mb-3">
+                <label asp-for="NombreDelIngrediente" class="form-label d-none">Nombre del Ingrediente</label>
+                <input asp-for="NombreDelIngrediente" class="form-control p-2" placeholder="Nombre" />
+                <span asp-validation-for="NombreDelIngrediente" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CategoriaDelIngrediente" class="form-label d-none">Categoria Del Ingrediente</label>
+                <select asp-for="CategoriaDelIngrediente" class="form-control p-2">
+                    <option value="" disabled selected>Categoría</option>
+                    <option value="AceitesyGrasas">Aceites y Grasas</option>
+                    <option value="CarneyPescado">Carne y Pescado</option>
+                    <option value="CerealesFrutosSecosyproductosparahornear">Cereales, frutos secos y productos para hornear</option>
+                    <option value="Frutas">Frutas</option>
+                    <option value="HierbasyEspecie">Hierbas y Especies</option>
+                    <option value="HuevosyLacteos">Huevos y Lacteos</option>
+                    <option value="PastaArrozyLegumbres">Pasta arroz y Legumbres</option>
+                    <option value="Verduras">Verduras</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Descripcion" class="form-label d-none">Descripcion</label>
+                <input asp-for="Descripcion" class="form-control p-2" placeholder="Descripcion" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Gramos" class="form-label d-none">Gramos</label>
+                <input asp-for="Gramos" class="form-control p-2" placeholder="Gramos" />
+                <span asp-validation-for="Gramos" class="text-danger"></span>
+            </div>
 
-<form asp-action="Crear" method="post">
-    <div class="form-group">
-        <label asp-for="NombreDelIngrediente">Nombre del Ingrediente</label>
-        <input asp-for="NombreDelIngrediente" class="form-control" />
-        <span asp-validation-for="NombreDelIngrediente" class="text-danger"></span>
+            <button type="submit" class="btn btn-dark fw-bold text-light p-2 sing-in rounded w-100">Crear Ingrediente</button>
+        </form>
     </div>
-    <div class="form-group">
-        <label asp-for="CategoriaDelIngrediente">Categoria Del Ingrediente</label>
-        <select asp-for="CategoriaDelIngrediente" class="form-control">
-            <option value="AceitesyGrasas">Aceites y Grasas</option>
-            <option value="CarneyPescado">Carne y Pescado</option>
-            <option value="CerealesFrutosSecosyproductosparahornear">Cereales, frutos secos y productos para hornear</option>
-            <option value="Frutas">Frutas</option>
-            <option value="HierbasyEspecie">Hierbas y Especies</option>
-            <option value="HuevosyLacteos">Huevos y Lacteos</option>
-            <option value="PastaArrozyLegumbres">Pasta arroz y Legumbres</option>
-            <option value="Verduras">Verduras</option>
-            <option value="Otros">Otros</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label asp-for="Descripcion">Descripcion</label>
-        <input asp-for="Descripcion" class="form-control" />
-        <span asp-validation-for="Descripcion" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Gramos">Gramos</label>
-        <input asp-for="Gramos" class="form-control" />
-        <span asp-validation-for="Gramos" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Agregar Ingrediente</button>
-</form>
+</div>

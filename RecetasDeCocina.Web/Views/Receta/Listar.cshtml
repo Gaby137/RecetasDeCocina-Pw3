@@ -5,52 +5,59 @@
     ViewData["Title"] = "Listado de Recetas";
 }
 
-<h2>@ViewData["Title"]</h2>
 
-<form action="/Receta/Listar" method="post">
-    <div class="form-horizontal">
-        <h4>Sucursales</h4>
-        <hr />
-        <partial name="/Views/Shared/_ComboTipoDeComida.cshtml">
-        <partial name="/Views/Shared/_ComboPais.cshtml">
-        <partial name="/Views/Shared/_ComboDificultad.cshtml">
-            <input type="submit" value="Filtrar" />
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Descripción</th>
-                        <th>Ingredientes</th>
-                        <th>Tipo</th>
-                        <th>País</th>
-                        <th>Dificultad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var receta in Model)
-                    {
-                        <tr>
-                            <td>@receta.Titulo</td>
-                            <td>@receta.Descripcion</td>
-                            <td>
-                                <ul>
-                                    @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
-                                    {
-                                        <li>
-                                            @ingrediente.NombreDelIngrediente
-                                        </li>
-                                    }
-                                </ul>
-                            </td>
-                            <td>@receta.TipoDePlato</td>
-                            <td>@receta.PaisDeOrigen</td>
-                            <td>@receta.Dificultad</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+<!--<h2>@ViewData["Title"]</h2>-->
+
+<div class="container w-75 my-5 px-0">
+    <div>
+
+        <h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+
+        <form action="/Receta/Listar" method="post">
+            <div class="text-center">
+                <partial name="/Views/Shared/_ComboTipoDeComida.cshtml">
+                <partial name="/Views/Shared/_ComboPais.cshtml">
+                <partial name="/Views/Shared/_ComboDificultad.cshtml">
+                <input type="submit" value="Filtrar"/>
+            </div>
+            <div class="form-horizontal">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Descripción</th>
+                                <th>Ingredientes</th>
+                                <th>Tipo</th>
+                                <th>País</th>
+                                <th>Dificultad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var receta in Model)
+                            {
+                                <tr>
+                                    <td>@receta.Titulo</td>
+                                    <td>@receta.Descripcion</td>
+                                    <td>
+                                        <ul>
+                                            @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+                                            {
+                                                <li>
+                                                    @ingrediente.NombreDelIngrediente
+                                                </li>
+                                            }
+                                        </ul>
+                                    </td>
+                                    <td>@receta.TipoDePlato</td>
+                                    <td>@receta.PaisDeOrigen</td>
+                                    <td>@receta.Dificultad</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+            </div>
+        </form>
     </div>
-</form>
-
+</div>
 
 

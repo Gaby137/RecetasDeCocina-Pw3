@@ -3,22 +3,27 @@
     ViewData["Title"] = "Iniciar sesión";
 }
 
-<h2>@ViewData["Title"]</h2>
+<!--<h2>@ViewData["Title"]</h2>-->
 
-<form asp-action="Login" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
+<div class="container w-50 my-5 px-0">
+    <form asp-action="Login" method="post">
 
-    <div class="form-group">
-        <label asp-for="Correo">Correo electrónico</label>
-        <input asp-for="Correo" class="form-control" />
-        <span asp-validation-for="Correo" class="text-danger"></span>
-    </div>
+        <!-- <div asp-validation-summary="All" class="text-danger"></div>-->
 
-    <div class="form-group">
-        <label asp-for="Contrasena">Contraseña</label>
-        <input asp-for="Contrasena" type="password" class="form-control" />
-        <span asp-validation-for="Contrasena" class="text-danger"></span>
-    </div>
+        <h2 class="mb-4 text-center">@ViewData["Title"]</h2>
 
-    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-</form>
+        <div class="mb-3">
+            <label asp-for="Correo" class="form-label d-none">Correo electrónico:</label>
+            <input asp-for="Correo" class="form-control p-2" placeholder="Correo" />
+            <span asp-validation-for="Correo" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Contrasena" class="form-label d-none">Contraseña:</label>
+            <input asp-for="Contrasena" type="password" class="form-control p-2" placeholder="Contraseña" />
+            <span asp-validation-for="Contrasena" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-dark fw-bold text-light p-2 sing-in rounded w-100">Iniciar sesión</button>
+    </form>
+</div>
