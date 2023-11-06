@@ -19,13 +19,6 @@ public interface IRecetasPersonalizadasServicio
 public class RecetasPersonalizadasServicio : IRecetasPersonalizadasServicio
 {
 
-   /* private  MongoDBRepository _context;
-
-    public RecetasPersonalizadasServicio(MongoDBRepository context)
-    {
-        _context = context;
-    } */
-
     public bool CumplePreferenciasYAlergias(Usuario usuario, Receta receta)
     {
        // Definir reglas y verificar si la receta cumple con cada regla

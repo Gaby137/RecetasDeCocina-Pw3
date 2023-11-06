@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using RecetasDeCocina.Data.Models;
 using RecetasDeCocina.Data.Repositories;
 using RecetasDeCocina.Web.Models;
-using System.Diagnostics;
+using MongoDB.Bson;
 
 namespace RecetasDeCocina.Web.Controllers;
 
@@ -21,15 +22,26 @@ public class UsuarioController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Login(LoginViewModel model)
     {
+
         if (ModelState.IsValid)
         {
+           
             // Buscar al usuario por su correo electrónico en la base de datos
             var usuario = db.BuscarPorCorreo(model.Correo);
 
+            // Convertir el valor de la propiedad 'Id' del usuario a una cadena
+          //  string idUsuarioCadena = usuario.Id.ToString();
+
+            // Convertir la cadena a un valor de tipo 'int'
+          //  int idUsuario = Convert.ToInt32(idUsuarioCadena);
+
             if (usuario != null && usuario.Contrasena == model.Contrasena)
             {
+
                 // Autenticación exitosa, establecer una sesión de usuario (puedes usar cookies, por ejemplo)
                 // Aquí deberías implementar la lógica para establecer la sesión de usuario
+                // Si el usuario existe, almacenamos su token de autenticación en la sesión.
+               // HttpContext.Session.SetInt32("UserId", idUsuario);
 
                 // Redirigir al usuario a la página de inicio
                 return RedirectToAction("Index", "Home");

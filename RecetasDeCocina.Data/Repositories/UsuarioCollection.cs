@@ -14,7 +14,7 @@ public interface IUsuarioCollection
 
     List<Usuario> Listar();
 
-    Usuario ObtenerUsuarioPorId(string id);
+    Task<Usuario> ObtenerUsuarioPorId(object id);
     Usuario BuscarPorCorreo(string correo);
 }
 
@@ -38,11 +38,15 @@ public class UsuarioCollection : IUsuarioCollection
     {
         throw new NotImplementedException();
     }
-
-    public Usuario ObtenerUsuarioPorId(string id)
+   
+    public async Task<Usuario> ObtenerUsuarioPorId(object id)
     {
-        throw new NotImplementedException();
-    }
+        var filter = Builders<Usuario>.Filter.Eq("_id", id);
+        var usuarioEncontrado = await Collection.Find(filter).FirstOrDefaultAsync();
+
+        return usuarioEncontrado;
+    } 
+
     public Usuario BuscarPorCorreo(string correo)
     {
         var filter = Builders<Usuario>.Filter.Eq(u => u.Correo, correo);
