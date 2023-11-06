@@ -29,14 +29,12 @@
                 <td>
                     <ul>
 
-                        @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+                        @foreach (var ingrediente in @receta.ListaIngredientes)
                         {
                             <li>
-
-                                @ingrediente.NombreDelIngrediente
+                                @ingrediente.Nombre
                             </li>
                         }
-
 
                     </ul>
                 </td>
@@ -44,3 +42,6 @@
         }
     </tbody>
 </table>
+
+
+
