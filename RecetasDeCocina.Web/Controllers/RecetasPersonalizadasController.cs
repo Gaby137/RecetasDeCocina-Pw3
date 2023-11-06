@@ -23,7 +23,7 @@ public class RecetasPersonalizadasController : Controller
     }
 
     
-       public async Task<ActionResult> GenerarRecetasPersonalizadas()
+       public async Task<ActionResult> GenerarRecetasPersonalizadas(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
        {
 
             // Obtén la id del usuario de la sesión
@@ -40,25 +40,31 @@ public class RecetasPersonalizadasController : Controller
                return RedirectToAction("Login", "Usuario");
            }
 
-           // Obtén todas las recetas de tu base de datos
-           var recetas = db.Listar();
+        AgregarFiltrosAlViewBag(tipoDePlato, paisDeOrigen, dificultad);
 
-           // Obtén la lista de ingredientes disponibles
-         //  List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
+        // Obtén todas las recetas de tu base de datos
+        var recetasFiltradas = db.Filtrar(tipoDePlato, paisDeOrigen, dificultad);
 
-           // Pasa la lista de ingredientes disponibles a la vista utilizando ViewBag
-       //    ViewBag.IngredientesDisponibles = ingredientesDisponibles;
 
            // Filtra las recetas según las preferencias y alergias del usuario
-           var recetasFiltradas = _recetasPersonalizadasServicio.FiltrarRecetasPersonalizadas(usuario, recetas);
+           var recetasPersonalizadas = _recetasPersonalizadasServicio.FiltrarRecetasPersonalizadas(usuario, recetasFiltradas);
 
            // Pasa las recetas filtradas a la vista utilizando ViewBag
-           ViewBag.RecetasPersonalizadas = recetasFiltradas;
+           ViewBag.RecetasPersonalizadas = recetasPersonalizadas;
 
            return View();
-       } 
-      
-    
-   
-     
+       }
+
+    private void AgregarFiltrosAlViewBag(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
+    {
+        ViewBag.Tipos = Enum.GetValues(typeof(TipoDePlato)).Cast<TipoDePlato>().ToList();
+        ViewBag.TipoSeleccionado = tipoDePlato;
+        ViewBag.Paises = Enum.GetValues(typeof(PaisDeOrigen)).Cast<PaisDeOrigen>().ToList();
+        ViewBag.PaisSeleccionado = paisDeOrigen;
+        ViewBag.Dificultades = Enum.GetValues(typeof(Dificultad)).Cast<Dificultad>().ToList();
+        ViewBag.DificultadSeleccionada = dificultad;
+    }
+
+
+
 }
