@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MongoDB.Bson;
 using RecetasDeCocina.Data.Models;
 using RecetasDeCocina.Data.Repositories;
 
@@ -25,7 +26,7 @@ public class RecetaController : Controller
         return View(new Receta());
     }
 
-    [HttpPost]
+    /*[HttpPost]
     [ValidateAntiForgeryToken]
     public ActionResult Crear(Receta receta)
     {
@@ -42,7 +43,51 @@ public class RecetaController : Controller
         {
             return View();
         }
+    } */
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Crear(Receta receta, string[] ListarIngredientes)
+    {
+        try
+        {
+            if (ModelState.IsValid)
+            {
+                // Obtén la lista de ingredientes disponibles
+                List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
+
+                // Pasa la lista de ingredientes disponibles a la vista utilizando ViewBag
+                ViewBag.IngredientesDisponibles = ingredientesDisponibles;
+
+                // Construir la lista de ingredientes seleccionados
+                //receta.ListarIngredientes = new List<Ingrediente>();
+                if (ListarIngredientes != null)
+                {
+                    foreach (var ingredienteId in ListarIngredientes)
+                    {
+                        ObjectId objectId;
+                        if (ObjectId.TryParse(ingredienteId, out objectId))
+                        {
+                            Ingrediente ingredienteExistente = ingredientesCo.BuscarIngredienteConId(objectId);
+                            if (ingredienteExistente != null)
+                            {
+                                receta.ListarIngredientes.Add(ingredienteExistente);
+                            }
+                        }
+                    }
+                }
+
+                db.Crear(receta);
+                return RedirectToAction(nameof(Listar));
+            }
+            return View(receta);
+        }
+        catch
+        {
+            return View();
+        }
     }
+
 
     /*
     public ActionResult Listar()

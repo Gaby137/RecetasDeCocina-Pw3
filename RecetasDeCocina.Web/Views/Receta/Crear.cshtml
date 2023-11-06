@@ -20,20 +20,34 @@
 
     <div class="form-group">
         <label for="Ingredientes">Ingredientes</label>
-        <ul>
-            @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
-            {
-                <li>
+        @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+        {
+            <div class="checkbox">
+                <label>
                     <input type="checkbox" name="ListarIngredientes" value="@ingrediente.Id" />
                     @ingrediente.NombreDelIngrediente
-                </li>
-            }
-        </ul>
+                </label>
+            </div>
+        }
     </div>
+
 
 
 
     <button type="submit" class="btn btn-primary">Crear Receta</button>
 </form>
 
-
+<!--   
+    <div class="form-group">
+        <label for="Ingredientes">Ingredientes</label>
+        <ul>
+@foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+{
+                    <li>
+                        <input type="checkbox" name="ListarIngredientes" value="@ingrediente.Id" />
+        @ingrediente.NombreDelIngrediente
+                    </li>
+}
+        </ul>
+    </div>
+    -->

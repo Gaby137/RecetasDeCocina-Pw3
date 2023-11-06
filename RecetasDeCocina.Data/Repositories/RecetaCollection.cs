@@ -21,23 +21,30 @@ public class RecetaCollection : IRecetaCollection
 
     internal MongoDBRepository _repository = new MongoDBRepository();
     private IMongoCollection<Receta> Collection;
+    private IngredienteCollection _ingredienteCollection;
 
     public RecetaCollection()
     {
         Collection = _repository.db.GetCollection<Receta>("Recetas");
+        _ingredienteCollection = new IngredienteCollection(); // Inicializa _ingredienteCollection
     }
 
 
     public void Crear(Receta receta)
     {
+        foreach (Ingrediente ingrediente in receta.ListarIngredientes)
+        {
+            Ingrediente ingredienteExistente = _ingredienteCollection.BuscarIngredienteConId(ingrediente.Id);
+            if (ingredienteExistente != null)
+            {
+                // Agregar el ingrediente existente a la receta
+                receta.ListarIngredientes.Add(ingredienteExistente);
+            }
+        }
+
         Collection.InsertOneAsync(receta);
     }
 
-   /* List<Receta> IRecetaCollection.Listar()
-    {
-        var recetas = Collection.Find(new BsonDocument()).ToList();
-        return recetas;
-    } */
 
     public List<Receta> Listar()
     {
