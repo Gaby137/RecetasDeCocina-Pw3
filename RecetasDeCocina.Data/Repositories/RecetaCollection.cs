@@ -7,7 +7,7 @@ namespace RecetasDeCocina.Data.Repositories;
 public interface IRecetaCollection {
     void Crear(Receta receta);
     List<Receta> Listar();
-    List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad);
+    List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, List<Ingrediente>? ingredientes);
 }
 
 
@@ -32,7 +32,7 @@ public class RecetaCollection : IRecetaCollection
         return Collection.Find(new BsonDocument()).ToList();
     }
 
-    public List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
+    public List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, List<Ingrediente>? ingredientes)
     {
         var recetas = Listar();
 
@@ -49,6 +49,11 @@ public class RecetaCollection : IRecetaCollection
         if (dificultad.HasValue)
         {
             recetas = recetas.Where(r => r.Dificultad == dificultad.Value).ToList();
+        }
+
+        if (ingredientes != null && ingredientes.Count > 0)
+        {
+            recetas = recetas.Where(r => ingredientes.All(i => r.ListaIngredientes.Any(li => li.Id == i.Id))).ToList();
         }
 
         return recetas;

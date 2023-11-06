@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
+using NuGet.Packaging.Signing;
 using RecetasDeCocina.Data.Models;
 using RecetasDeCocina.Data.Repositories;
 
@@ -36,18 +37,24 @@ public class RecetaController : Controller
         return RedirectToAction(nameof(Listar));
     }
 
-    public ActionResult Listar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
+    public ActionResult Listar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, string[]? idsIngredientes)
     {
         List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();  
         ViewBag.IngredientesDisponibles = ingredientesDisponibles;
-        AgregarFiltrosAlViewBag(tipoDePlato, paisDeOrigen, dificultad);
+        List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
+        foreach (var id in idsIngredientes)
+        {
+            Ingrediente ingrediente = ingredientesCo.BuscarIngredienteConId(ObjectId.Parse(id));
+            ingredientesSeleccionados.Add(ingrediente);
+        }
 
-        var recetasFiltradas = db.Filtrar(tipoDePlato, paisDeOrigen, dificultad);
+        var recetasFiltradas = db.Filtrar(tipoDePlato, paisDeOrigen, dificultad, ingredientesSeleccionados);
+        AgregarFiltrosAlViewBag(tipoDePlato, paisDeOrigen, dificultad, idsIngredientes);
 
         return View(recetasFiltradas);
     }
 
-    private void AgregarFiltrosAlViewBag(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
+    private void AgregarFiltrosAlViewBag(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, string[]? idsIngredientes)
     {
         ViewBag.Tipos = Enum.GetValues(typeof(TipoDePlato)).Cast<TipoDePlato>().ToList();
         ViewBag.TipoSeleccionado = tipoDePlato;
@@ -55,5 +62,6 @@ public class RecetaController : Controller
         ViewBag.PaisSeleccionado = paisDeOrigen;
         ViewBag.Dificultades = Enum.GetValues(typeof(Dificultad)).Cast<Dificultad>().ToList();
         ViewBag.DificultadSeleccionada = dificultad;
+        ViewBag.IngredientesSeleccionados = idsIngredientes;
     }
 }
