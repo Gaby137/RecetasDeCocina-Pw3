@@ -32,3 +32,20 @@ D:\Cosas de gaby\Practica C Sharp\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj
 D:\Cosas de gaby\Practica C Sharp\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.pdb
 D:\Cosas de gaby\Practica C Sharp\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.genruntimeconfig.cache
 D:\Cosas de gaby\Practica C Sharp\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\ref\RecetasDeCocina.Logica.dll
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Logica.deps.json
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Logica.runtimeconfig.json
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Logica.dll
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Logica.pdb
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Data.dll
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\bin\Debug\net6.0\RecetasDeCocina.Data.pdb
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.csproj.AssemblyReference.cache
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.GeneratedMSBuildEditorConfig.editorconfig
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.AssemblyInfoInputs.cache
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.AssemblyInfo.cs
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.csproj.CoreCompileInputs.cache
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.csproj.CopyComplete
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.dll
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\refint\RecetasDeCocina.Logica.dll
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.pdb
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\RecetasDeCocina.Logica.genruntimeconfig.cache
+C:\pw3\RecetasDeCocina-Pw3\RecetasDeCocina.Logica\obj\Debug\net6.0\ref\RecetasDeCocina.Logica.dll

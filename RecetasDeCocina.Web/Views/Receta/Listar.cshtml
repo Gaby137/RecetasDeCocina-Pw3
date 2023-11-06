@@ -7,36 +7,50 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Ingredientes</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var receta in Model)
-        {
-            <tr>
-                <td>@receta.Titulo</td>
-                <td>@receta.Descripcion</td>
-                <td>
-                    <ul>
-                   
-                            @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
-                            {
-                                <li>
-                                    
-                                    @ingrediente.NombreDelIngrediente
-                                </li>
-                            }
-                        
-                   
-                    </ul>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<form action="/Receta/Listar" method="post">
+    <div class="form-horizontal">
+        <h4>Sucursales</h4>
+        <hr />
+        <partial name="/Views/Shared/_ComboTipoDeComida.cshtml">
+        <partial name="/Views/Shared/_ComboPais.cshtml">
+        <partial name="/Views/Shared/_ComboDificultad.cshtml">
+            <input type="submit" value="Filtrar" />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Ingredientes</th>
+                        <th>Tipo</th>
+                        <th>País</th>
+                        <th>Dificultad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var receta in Model)
+                    {
+                        <tr>
+                            <td>@receta.Titulo</td>
+                            <td>@receta.Descripcion</td>
+                            <td>
+                                <ul>
+                                    @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+                                    {
+                                        <li>
+                                            @ingrediente.NombreDelIngrediente
+                                        </li>
+                                    }
+                                </ul>
+                            </td>
+                            <td>@receta.TipoDePlato</td>
+                            <td>@receta.PaisDeOrigen</td>
+                            <td>@receta.Dificultad</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+    </div>
+</form>
+
+
 

@@ -1,18 +1,13 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using RecetasDeCocina.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RecetasDeCocina.Data.Repositories;
 
 public interface IRecetaCollection {
     void Crear(Receta receta);
-
     List<Receta> Listar();
+    List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad);
 }
 
 
@@ -33,9 +28,31 @@ public class RecetaCollection : IRecetaCollection
         Collection.InsertOneAsync(receta);
     }
 
-    List<Receta> IRecetaCollection.Listar()
+    public List<Receta> Listar()
     {
         var recetas = Collection.Find(new BsonDocument()).ToList();
+        return recetas;
+    }
+
+    public List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
+    {
+        var recetas = Listar();
+
+        if (tipoDePlato.HasValue)
+        {
+            recetas = recetas.Where(r => r.TipoDePlato == tipoDePlato.Value).ToList();
+        }
+
+        if (paisDeOrigen.HasValue)
+        {
+            recetas = recetas.Where(r => r.PaisDeOrigen == paisDeOrigen.Value).ToList();
+        }
+
+        if (dificultad.HasValue)
+        {
+            recetas = recetas.Where(r => r.Dificultad == dificultad.Value).ToList();
+        }
+
         return recetas;
     }
 }

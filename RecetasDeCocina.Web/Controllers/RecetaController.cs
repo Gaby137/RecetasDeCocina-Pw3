@@ -12,7 +12,6 @@ public class RecetaController : Controller
     // Propiedad para almacenar temporalmente los ingredientes seleccionados
     private List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
 
-
     public ActionResult Crear()
     {
         // Obtén la lista de ingredientes disponibles
@@ -43,27 +42,25 @@ public class RecetaController : Controller
         }
     }
 
-
-    public ActionResult Listar()
+    public ActionResult Listar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
     {
-        // Obtén la lista de ingredientes disponibles
-        List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
-        // Pasa la lista de ingredientes disponibles a la vista utilizando ViewBag
+        List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();  
         ViewBag.IngredientesDisponibles = ingredientesDisponibles;
-        return View(db.Listar());
+        AgregarFiltrosAlViewBag(tipoDePlato, paisDeOrigen, dificultad);
+
+        var recetasFiltradas = db.Filtrar(tipoDePlato, paisDeOrigen, dificultad);
+
+        return View(recetasFiltradas);
     }
 
-
-
-  
-
-
-
-
+    private void AgregarFiltrosAlViewBag(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
+    {
+        ViewBag.Tipos = Enum.GetValues(typeof(TipoDePlato)).Cast<TipoDePlato>().ToList();
+        ViewBag.TipoSeleccionado = tipoDePlato;
+        ViewBag.Paises = Enum.GetValues(typeof(PaisDeOrigen)).Cast<PaisDeOrigen>().ToList();
+        ViewBag.PaisSeleccionado = paisDeOrigen;
+        ViewBag.Dificultades = Enum.GetValues(typeof(Dificultad)).Cast<Dificultad>().ToList();
+        ViewBag.DificultadSeleccionada = dificultad;
+    }
 
 }
-
-
-
-
-

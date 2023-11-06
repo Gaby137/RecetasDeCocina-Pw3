@@ -1,22 +1,51 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RecetasDeCocina.Data.Models;
 
-public  class Receta
+public enum TipoDePlato
+{
+    DESAYUNO,
+    ALMUERZO,
+    MERIENDA,
+    CENA
+}
+
+public enum PaisDeOrigen
+{
+    ARGENTINA,
+    MEXICO,
+    PERU,
+    COLOMBIA,
+    CHILE,
+    BRASIL,
+    INGLATERRA,
+    ESPAÑA,
+    ITALIA,
+    FRANCIA,
+    CHINA,
+    JAPON,
+    INDIA,
+    TAILANDIA
+}
+
+public enum Dificultad
+{
+    FACIL,
+    MEDIO,
+    DIFICIL
+}
+
+public class Receta
 {
     [BsonId]
     public ObjectId Id { get; set; }
-
     public string Titulo { get; set; }
     public string Descripcion { get; set; }
     public List<Ingrediente> ListarIngredientes { get; set; }
-
+    public TipoDePlato TipoDePlato { get; set; }
+    public PaisDeOrigen PaisDeOrigen { get; set; }
+    public Dificultad Dificultad { get; set; }
 }
 
 

@@ -1701,19 +1701,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Segros\\.nuget\\packages\\": {}
+    "C:\\Users\\tomay\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Cosas de gaby\\Practica C Sharp\\RecetasDeCocina-Pw3\\RecetasDeCocina.Data\\RecetasDeCocina.Data.csproj",
+      "projectUniqueName": "C:\\pw3\\RecetasDeCocina-Pw3\\RecetasDeCocina.Data\\RecetasDeCocina.Data.csproj",
       "projectName": "RecetasDeCocina.Data",
-      "projectPath": "D:\\Cosas de gaby\\Practica C Sharp\\RecetasDeCocina-Pw3\\RecetasDeCocina.Data\\RecetasDeCocina.Data.csproj",
-      "packagesPath": "C:\\Users\\Segros\\.nuget\\packages\\",
-      "outputPath": "D:\\Cosas de gaby\\Practica C Sharp\\RecetasDeCocina-Pw3\\RecetasDeCocina.Data\\obj\\",
+      "projectPath": "C:\\pw3\\RecetasDeCocina-Pw3\\RecetasDeCocina.Data\\RecetasDeCocina.Data.csproj",
+      "packagesPath": "C:\\Users\\tomay\\.nuget\\packages\\",
+      "outputPath": "C:\\pw3\\RecetasDeCocina-Pw3\\RecetasDeCocina.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Segros\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tomay\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1780,7 +1780,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

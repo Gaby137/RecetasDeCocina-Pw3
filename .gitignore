@@ -1,0 +1,8 @@
+.github
+.vs
+RecetasDeCocina.Data/bin
+RecetasDeCocina.Data/obj
+RecetasDeCocina.Logica/bin
+RecetasDeCocina.Logica/obj
+RecetasDeCocina.Web/bin
+RecetasDeCocina.Web/obj

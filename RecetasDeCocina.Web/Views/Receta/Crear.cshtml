@@ -17,7 +17,6 @@
         <input asp-for="Descripcion" class="form-control" />
         <span asp-validation-for="Descripcion" class="text-danger"></span>
     </div>
-
     <div class="form-group">
         <label for="Ingredientes">Ingredientes</label>
         <ul>
@@ -30,9 +29,33 @@
             }
         </ul>
     </div>
-
-
-
+    <div class="form-group">
+        <label for="TipoDePlato">Tipo de Plato</label>
+        <select asp-for="TipoDePlato" class="form-control">
+            @foreach (var tipo in Enum.GetValues(typeof(TipoDePlato)))
+            {
+                <option value="@tipo">@tipo</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="PaisDeOrigen">País de origen</label>
+        <select asp-for="PaisDeOrigen" class="form-control">
+            @foreach (var pais in Enum.GetValues(typeof(PaisDeOrigen)))
+            {
+                <option value="@pais">@pais</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Dificultad">Dificultad</label>
+        <select asp-for="Dificultad" class="form-control">
+            @foreach (var dificultad in Enum.GetValues(typeof(Dificultad)))
+            {
+                <option value="@dificultad">@dificultad</option>
+            }
+        </select>
+    </div>
     <button type="submit" class="btn btn-primary">Crear Receta</button>
 </form>
 
