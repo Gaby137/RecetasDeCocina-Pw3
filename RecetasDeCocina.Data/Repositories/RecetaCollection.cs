@@ -26,13 +26,13 @@ public class RecetaCollection : IRecetaCollection
 
     public void Crear(Receta receta)
     {
-        foreach (Ingrediente ingrediente in receta.ListarIngredientes)
+        foreach (Ingrediente ingrediente in receta.ListaIngredientes)
         {
             Ingrediente ingredienteExistente = _ingredienteCollection.BuscarIngredienteConId(ingrediente.Id);
             if (ingredienteExistente != null)
             {
                 // Agregar el ingrediente existente a la receta
-                receta.ListarIngredientes.Add(ingredienteExistente);
+                receta.ListaIngredientes.Add(ingredienteExistente);
             }
         }
 

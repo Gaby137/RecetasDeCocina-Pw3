@@ -81,7 +81,7 @@ public class RecetasPersonalizadasServicio : IRecetasPersonalizadasServicio
         if (usuario.AlimentosAlergicos == AlimentosAlergicos.MANI)
         {
 
-            if (receta.ListarIngredientes.Any(ingrediente => ingrediente.NombreDelIngrediente.Contains("mani") ||
+            if (receta.ListaIngredientes.Any(ingrediente => ingrediente.Nombre.Contains("mani") ||
                                                            ingrediente.Descripcion.Contains("mani")))
             {
 
@@ -98,7 +98,7 @@ public class RecetasPersonalizadasServicio : IRecetasPersonalizadasServicio
         if (usuario.AlimentosAlergicos == AlimentosAlergicos.LECHE)
         {
 
-            if (receta.ListarIngredientes.Any(ingrediente => ingrediente.NombreDelIngrediente.Contains("leche") ||
+            if (receta.ListaIngredientes.Any(ingrediente => ingrediente.Nombre.Contains("leche") ||
                                                            ingrediente.Descripcion.Contains("leche")))
             {
 
@@ -114,7 +114,7 @@ public class RecetasPersonalizadasServicio : IRecetasPersonalizadasServicio
         if (usuario.AlimentosAlergicos == AlimentosAlergicos.MARISCOS)
         {
 
-            if (receta.ListarIngredientes.Any(ingrediente => ingrediente.NombreDelIngrediente.Contains("mariscos") ||
+            if (receta.ListaIngredientes.Any(ingrediente => ingrediente.Nombre.Contains("mariscos") ||
                                                            ingrediente.Descripcion.Contains("mariscos")))
             {
 
@@ -131,7 +131,7 @@ public class RecetasPersonalizadasServicio : IRecetasPersonalizadasServicio
         if (usuario.PreferenciasAlimentarias == PreferenciasAlimentarias.SIN_LACTOSA)
         {
            
-            if (receta.ListarIngredientes.Any(ingrediente => ingrediente.NombreDelIngrediente.Contains("lactosa") ||
+            if (receta.ListaIngredientes.Any(ingrediente => ingrediente.Nombre.Contains("lactosa") ||
                                                            ingrediente.Descripcion.Contains("lactosa")))
             {
                 
@@ -148,7 +148,7 @@ public class RecetasPersonalizadasServicio : IRecetasPersonalizadasServicio
         if (usuario.PreferenciasAlimentarias == PreferenciasAlimentarias.SIN_GLUTEN)
         {
 
-            if (receta.ListarIngredientes.Any(ingrediente => ingrediente.NombreDelIngrediente.Contains("gluten") ||
+            if (receta.ListaIngredientes.Any(ingrediente => ingrediente.Nombre.Contains("gluten") ||
                                                            ingrediente.Descripcion.Contains("gluten")))
             {
 
@@ -165,7 +165,7 @@ public class RecetasPersonalizadasServicio : IRecetasPersonalizadasServicio
         if (usuario.PreferenciasAlimentarias == PreferenciasAlimentarias.EQUILIBRADA)
         {
 
-            if (receta.ListarIngredientes.Any(ingrediente => ingrediente.NombreDelIngrediente.Contains("equilibrada") ||
+            if (receta.ListaIngredientes.Any(ingrediente => ingrediente.Nombre.Contains("equilibrada") ||
                                                            ingrediente.Descripcion.Contains("equilibrada")))
             {
 
@@ -182,7 +182,7 @@ public class RecetasPersonalizadasServicio : IRecetasPersonalizadasServicio
         if (usuario.PreferenciasAlimentarias == PreferenciasAlimentarias.VEGANO)
         {
 
-            if (receta.ListarIngredientes.Any(ingrediente => ingrediente.NombreDelIngrediente.Contains("vegano") ||
+            if (receta.ListaIngredientes.Any(ingrediente => ingrediente.Nombre.Contains("vegano") ||
                                                            ingrediente.Descripcion.Contains("vegano")))
             {
 
@@ -201,7 +201,7 @@ public class RecetasPersonalizadasServicio : IRecetasPersonalizadasServicio
         if (usuario.PreferenciasAlimentarias == PreferenciasAlimentarias.VEGETARIANO)
         {
             // Verificar si la receta contiene carne
-            if (receta.ListarIngredientes.Any(ingrediente => ingrediente.NombreDelIngrediente.Contains("carne") ||
+            if (receta.ListaIngredientes.Any(ingrediente => ingrediente.Nombre.Contains("carne") ||
                                                            ingrediente.Descripcion.Contains("carne")))
             {
                 // La receta contiene carne y el usuario es vegetariano, no cumple con la regla

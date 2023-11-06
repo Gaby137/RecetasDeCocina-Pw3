@@ -47,7 +47,7 @@ public class RecetaController : Controller
                             Ingrediente ingredienteExistente = ingredientesCo.BuscarIngredienteConId(objectId);
                             if (ingredienteExistente != null)
                             {
-                                receta.ListarIngredientes.Add(ingredienteExistente);
+                                receta.ListaIngredientes.Add(ingredienteExistente);
                             }
                         }
                     }
@@ -64,26 +64,6 @@ public class RecetaController : Controller
         }
     }
 
-
-    /*
-    public ActionResult Listar()
-        
-        db.Crear(receta);
-        
-        return RedirectToAction(nameof(Listar));
-    }
-
-    public ActionResult Listar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
-    {
-        List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();  
-        ViewBag.IngredientesDisponibles = ingredientesDisponibles;
-        AgregarFiltrosAlViewBag(tipoDePlato, paisDeOrigen, dificultad);
-
-        var recetasFiltradas = db.Filtrar(tipoDePlato, paisDeOrigen, dificultad);
-
-        return View(recetasFiltradas);
-    }
-    */
     public ActionResult Listar()
     {
         List<Receta> recetas = db.Listar();
