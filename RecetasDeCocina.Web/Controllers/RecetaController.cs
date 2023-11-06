@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using MongoDB.Bson;
 using RecetasDeCocina.Data.Models;
 using RecetasDeCocina.Data.Repositories;
@@ -16,59 +15,37 @@ public class RecetaController : Controller
         List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
 
         ViewBag.IngredientesDisponibles = ingredientesDisponibles;
-        
+
         return View(new Receta());
     }
 
-
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Crear(Receta receta, string[] ListarIngredientes)
+    public ActionResult Crear(Receta receta, string[] ids)
     {
-        try
+        receta.ListaIngredientes = new List<Ingrediente>();
+
+        foreach (var id in ids)
         {
-            if (ModelState.IsValid)
-            {
-                // Obtén la lista de ingredientes disponibles
-                List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
-
-                // Pasa la lista de ingredientes disponibles a la vista utilizando ViewBag
-                ViewBag.IngredientesDisponibles = ingredientesDisponibles;
-
-                // Construir la lista de ingredientes seleccionados
-                //receta.ListarIngredientes = new List<Ingrediente>();
-                if (ListarIngredientes != null)
-                {
-                    foreach (var ingredienteId in ListarIngredientes)
-                    {
-                        ObjectId objectId;
-                        if (ObjectId.TryParse(ingredienteId, out objectId))
-                        {
-                            Ingrediente ingredienteExistente = ingredientesCo.BuscarIngredienteConId(objectId);
-                            if (ingredienteExistente != null)
-                            {
-                                receta.ListaIngredientes.Add(ingredienteExistente);
-                            }
-                        }
-                    }
-                }
-
-                db.Crear(receta);
-                return RedirectToAction(nameof(Listar));
-            }
-            return View(receta);
+            Ingrediente ingrediente = ingredientesCo.BuscarIngredienteConId(ObjectId.Parse(id));
+            receta.ListaIngredientes.Add(ingrediente);
         }
-        catch
-        {
-            return View();
-        }
+
+        db.Crear(receta);
+
+        return RedirectToAction(nameof(Listar));
     }
 
-    public ActionResult Listar()
+    public ActionResult Listar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
     {
-        List<Receta> recetas = db.Listar();
-        return View(recetas);
-    } 
+        List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
+        ViewBag.IngredientesDisponibles = ingredientesDisponibles;
+        AgregarFiltrosAlViewBag(tipoDePlato, paisDeOrigen, dificultad);
+
+        var recetasFiltradas = db.Filtrar(tipoDePlato, paisDeOrigen, dificultad);
+
+        return View(recetasFiltradas);
+    }
 
     private void AgregarFiltrosAlViewBag(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
     {
@@ -79,5 +56,4 @@ public class RecetaController : Controller
         ViewBag.Dificultades = Enum.GetValues(typeof(Dificultad)).Cast<Dificultad>().ToList();
         ViewBag.DificultadSeleccionada = dificultad;
     }
-
 }

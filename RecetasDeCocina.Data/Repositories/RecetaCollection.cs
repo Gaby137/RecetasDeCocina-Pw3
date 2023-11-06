@@ -4,7 +4,8 @@ using RecetasDeCocina.Data.Models;
 
 namespace RecetasDeCocina.Data.Repositories;
 
-public interface IRecetaCollection {
+public interface IRecetaCollection
+{
     void Crear(Receta receta);
     List<Receta> Listar();
     List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad);
@@ -15,27 +16,15 @@ public class RecetaCollection : IRecetaCollection
 {
     internal MongoDBRepository _repository = new MongoDBRepository();
     private IMongoCollection<Receta> Collection;
-    private IngredienteCollection _ingredienteCollection;
 
     public RecetaCollection()
     {
         Collection = _repository.db.GetCollection<Receta>("Recetas");
-        _ingredienteCollection = new IngredienteCollection(); // Inicializa _ingredienteCollection
     }
 
 
     public void Crear(Receta receta)
     {
-        foreach (Ingrediente ingrediente in receta.ListaIngredientes)
-        {
-            Ingrediente ingredienteExistente = _ingredienteCollection.BuscarIngredienteConId(ingrediente.Id);
-            if (ingredienteExistente != null)
-            {
-                // Agregar el ingrediente existente a la receta
-                receta.ListaIngredientes.Add(ingredienteExistente);
-            }
-        }
-
         Collection.InsertOneAsync(receta);
     }
 
@@ -65,8 +54,4 @@ public class RecetaCollection : IRecetaCollection
 
         return recetas;
     }
-
-
-
-
 }
