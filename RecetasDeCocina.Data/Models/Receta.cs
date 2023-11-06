@@ -46,4 +46,9 @@ public class Receta
     public TipoDePlato TipoDePlato { get; set; }
     public PaisDeOrigen PaisDeOrigen { get; set; }
     public Dificultad Dificultad { get; set; }
+
+    internal List<Receta> ToList()
+    {
+        throw new NotImplementedException();
+    }
 }

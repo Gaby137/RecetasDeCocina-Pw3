@@ -1,0 +1,17 @@
+﻿@using RecetasDeCocina.Data.Models
+
+<select id="Ingrediente" name="Ingrediente">
+
+    <option>Ingrediente</option>
+    @foreach (Ingrediente item in ViewBag.Ingredientes)
+    {
+        if (((Ingrediente?)ViewBag.IngredienteSeleccionado) == item)
+        {
+            <option value="@item" selected>@item.Nombre</option>
+        }
+        else
+        {
+            <option value="@item">@item.Nombre</option>
+        }
+    }
+</select>
