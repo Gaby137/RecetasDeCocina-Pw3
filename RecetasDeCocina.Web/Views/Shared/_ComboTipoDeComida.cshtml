@@ -1,0 +1,16 @@
+﻿@using RecetasDeCocina.Data.Models
+
+<select id="TipoDePlato" name="TipoDePlato">
+    <option>Tipo</option>
+    @foreach (TipoDePlato item in ViewBag.Tipos)
+    {
+        if (((TipoDePlato?)ViewBag.TipoSeleccionado).HasValue && ((TipoDePlato?)ViewBag.TipoSeleccionado).Value == item)
+        {
+            <option value="@item" selected>@item</option>
+        }
+        else
+        {
+            <option value="@item">@item</option>
+        }
+    }
+</select>

@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\RecetasDeCocina.Web.props" />
-</Project>

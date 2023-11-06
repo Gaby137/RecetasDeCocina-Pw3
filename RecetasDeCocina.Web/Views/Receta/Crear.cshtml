@@ -1,7 +1,7 @@
 ﻿@using RecetasDeCocina.Data.Models
 @model Receta
 @{
-    ViewData["Title"] = "Creacion de Receta";
+    ViewData["Title"] = "Creación de Receta";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -18,36 +18,44 @@
         <span asp-validation-for="Descripcion" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label for="Ingredientes">Ingredientes</label>
-        @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
-        {
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="ListarIngredientes" value="@ingrediente.Id" />
-                    @ingrediente.NombreDelIngrediente
-                </label>
-            </div>
-        }
+    <label asp-for="ListaIngredientes">Ingredientes</label>
+            @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+            {
+                <div>
+                    <label for="@ingrediente.Id">
+                        <input type="checkbox" name="ids" value="@ingrediente.Id" />
+                        @ingrediente.Nombre
+                    </label>
+                </div>
+            }
     </div>
-
-
-
-
+    <div class="form-group">
+        <label for="TipoDePlato">Tipo de Plato</label>
+        <select asp-for="TipoDePlato" class="form-control">
+            @foreach (var tipo in Enum.GetValues(typeof(TipoDePlato)))
+            {
+                <option value="@tipo">@tipo</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="PaisDeOrigen">País de origen</label>
+        <select asp-for="PaisDeOrigen" class="form-control">
+            @foreach (var pais in Enum.GetValues(typeof(PaisDeOrigen)))
+            {
+                <option value="@pais">@pais</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Dificultad">Dificultad</label>
+        <select asp-for="Dificultad" class="form-control">
+            @foreach (var dificultad in Enum.GetValues(typeof(Dificultad)))
+            {
+                <option value="@dificultad">@dificultad</option>
+            }
+        </select>
+    </div>
     <button type="submit" class="btn btn-primary">Crear Receta</button>
 </form>
 
-<!--   
-    <div class="form-group">
-        <label for="Ingredientes">Ingredientes</label>
-        <ul>
-@foreach (var ingrediente in ViewBag.IngredientesDisponibles)
-{
-                    <li>
-                        <input type="checkbox" name="ListarIngredientes" value="@ingrediente.Id" />
-        @ingrediente.NombreDelIngrediente
-                    </li>
-}
-        </ul>
-    </div>
-    -->
