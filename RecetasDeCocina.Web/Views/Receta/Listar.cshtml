@@ -5,7 +5,6 @@
     ViewData["Title"] = "Listado de Recetas";
 }
 
-
 <!--<h2>@ViewData["Title"]</h2>-->
 
 <div class="container w-75 my-5 px-0">
@@ -40,10 +39,10 @@
                                     <td>@receta.Descripcion</td>
                                     <td>
                                         <ul>
-                                            @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+                                        @foreach (var ingrediente in @receta.ListaIngredientes)
                                             {
                                                 <li>
-                                                    @ingrediente.NombreDelIngrediente
+                                                @ingrediente.Nombre
                                                 </li>
                                             }
                                         </ul>

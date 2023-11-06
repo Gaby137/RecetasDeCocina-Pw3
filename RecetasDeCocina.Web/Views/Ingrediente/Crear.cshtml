@@ -10,13 +10,13 @@
         <h2 class="mb-4 text-center">@ViewData["Title"]</h2>
         <form asp-action="Crear" method="post">
             <div class="mb-3">
-                <label asp-for="NombreDelIngrediente" class="form-label d-none">Nombre del Ingrediente</label>
-                <input asp-for="NombreDelIngrediente" class="form-control p-2" placeholder="Nombre" />
-                <span asp-validation-for="NombreDelIngrediente" class="text-danger"></span>
+                <label asp-for="Nombre" class="form-label d-none">Nombre:</label>
+                <input asp-for="Nombre" class="form-control p-2" placeholder="Nombre" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="CategoriaDelIngrediente" class="form-label d-none">Categoria Del Ingrediente</label>
-                <select asp-for="CategoriaDelIngrediente" class="form-control p-2">
+                <label asp-for="Categoria" class="form-label d-none">Categoría</label>
+                <select asp-for="Categoria" class="form-control p-2">
                     <option value="" disabled selected>Categoría</option>
                     <option value="AceitesyGrasas">Aceites y Grasas</option>
                     <option value="CarneyPescado">Carne y Pescado</option>
@@ -39,8 +39,8 @@
                 <input asp-for="Gramos" class="form-control p-2" placeholder="Gramos" />
                 <span asp-validation-for="Gramos" class="text-danger"></span>
             </div>
-
             <button type="submit" class="btn btn-dark fw-bold text-light p-2 sing-in rounded w-100">Crear Ingrediente</button>
         </form>
     </div>
 </div>
+

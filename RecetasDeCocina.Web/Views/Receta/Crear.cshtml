@@ -20,16 +20,16 @@
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label for="Ingredientes" class="form-label">Ingredientes:</label>
-                <ul>
-                    @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
-                    {
-                        <li>
-                            <input type="checkbox" name="ListarIngredientes" value="@ingrediente.Id" />
-                            @ingrediente.NombreDelIngrediente
-                        </li>
-                    }
-                </ul>
+                <label asp-for="ListaIngredientes" class="form-label">Ingredientes</label>
+                @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+                {
+                    <div>
+                        <label for="@ingrediente.Id">
+                            <input type="checkbox" name="ids" value="@ingrediente.Id" />
+                            @ingrediente.Nombre
+                        </label>
+                    </div>
+                }
             </div>
             <div class="mb-3">
                 <label for="TipoDePlato" class="form-label d-none">Tipo de plato</label>
