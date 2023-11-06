@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using RecetasDeCocina.Data.Models;
 using RecetasDeCocina.Data.Repositories;
 using RecetasDeCocina.Web.Models;
@@ -10,6 +11,7 @@ public class UsuarioController : Controller
 {
 
     private IUsuarioCollection db = new UsuarioCollection();
+    private IRecetaCollection recetaCollection = new RecetaCollection();
 
     public ActionResult Login()
     {
@@ -30,6 +32,10 @@ public class UsuarioController : Controller
             {
                 // Autenticación exitosa, establecer una sesión de usuario (puedes usar cookies, por ejemplo)
                 // Aquí deberías implementar la lógica para establecer la sesión de usuario
+                HttpContext.Session.SetString("UserId", usuario.Id.ToString());
+       
+
+
 
                 // Redirigir al usuario a la página de inicio
                 return RedirectToAction("Index", "Home");
@@ -118,7 +124,52 @@ public class UsuarioController : Controller
         }
     }
 
+    [HttpPost]
+    public ActionResult GuardarRecetaFav(string idReceta)
+    {
+        Debug.WriteLine($"idReceta: {idReceta}");
 
 
+        var usuarioId = HttpContext.Session.GetString("UserId");
 
+        Debug.WriteLine($"usuarioId: {usuarioId}");
+
+
+        if (usuarioId != null)
+        {
+            if (ObjectId.TryParse(idReceta, out ObjectId recetaId))
+            {
+                ObjectId idUsuario = ObjectId.Parse(usuarioId);
+                db.GuardarRecetaFav(idUsuario, recetaId);
+            }
+            else
+            {
+                return RedirectToAction("MisRecetasFavoritas"); 
+
+            }
+
+        }
+        return RedirectToAction("MisRecetasFavoritas"); 
+
+    }
+
+    public ActionResult MisRecetasFavoritas()
+    {
+
+        var usuarioId = HttpContext.Session.GetString("UserId");
+
+        if (usuarioId != null)
+        {
+            ObjectId idUsuario = ObjectId.Parse(usuarioId);
+            var usuario = db.ObtenerUsuarioPorId(idUsuario);
+            var recetasFavoritas = recetaCollection.ObtenerRecetasPorIds(usuario.RecetasFavoritas);
+
+            return View(recetasFavoritas);
+        }
+
+     return View(new List<Receta>()); 
+
+    }
+
+    
 }
