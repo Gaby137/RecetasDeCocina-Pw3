@@ -15,6 +15,10 @@
         <partial name="/Views/Shared/_ComboPais.cshtml">
         <partial name="/Views/Shared/_ComboDificultad.cshtml">
             <input type="submit" value="Filtrar" />
+    </div>
+
+</form>
+
             <table class="table">
                 <thead>
                     <tr>
@@ -48,7 +52,7 @@
                             <td>@receta.Dificultad</td>
                                     <td>
                                         <form action="/Usuario/GuardarRecetaFav" method="post">
-                                            <input type="hidden" name="idReceta" value="@receta.Id" /> 
+                                            <input type="hidden" name="idReceta" value="@receta.Id" />
                                             <button type="submit" class="btn btn-primary">Agregar a favoritas</button>
                                         </form>
 
@@ -59,8 +63,6 @@
                     }
                 </tbody>
             </table>
-    </div>
-</form>
 
 
 

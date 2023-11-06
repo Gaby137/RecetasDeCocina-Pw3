@@ -8,6 +8,9 @@ public interface IRecetaCollection {
     void Crear(Receta receta);
     List<Receta> Listar();
     List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad);
+
+    Receta BuscarRecetaPorId(ObjectId id);
+
 }
 
 
@@ -54,5 +57,13 @@ public class RecetaCollection : IRecetaCollection
         }
 
         return recetas;
+
     }
+    public Receta BuscarRecetaPorId(ObjectId id)
+    {
+        return Collection.Find(r => r.Id == id).FirstOrDefault();
+
+    }
+
+
 }

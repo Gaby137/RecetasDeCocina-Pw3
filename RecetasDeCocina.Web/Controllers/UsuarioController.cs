@@ -35,8 +35,6 @@ public class UsuarioController : Controller
                 HttpContext.Session.SetString("UserId", usuario.Id.ToString());
        
 
-
-
                 // Redirigir al usuario a la página de inicio
                 return RedirectToAction("Index", "Home");
             }
@@ -127,26 +125,16 @@ public class UsuarioController : Controller
     [HttpPost]
     public ActionResult GuardarRecetaFav(string idReceta)
     {
-        Debug.WriteLine($"idReceta: {idReceta}");
+        var idUsuario = HttpContext.Session.GetString("UserId");
 
+        if (idUsuario != null)
+        {         
+                ObjectId recetaId = ObjectId.Parse(idReceta);
 
-        var usuarioId = HttpContext.Session.GetString("UserId");
-
-        Debug.WriteLine($"usuarioId: {usuarioId}");
-
-
-        if (usuarioId != null)
-        {
-            if (ObjectId.TryParse(idReceta, out ObjectId recetaId))
-            {
-                ObjectId idUsuario = ObjectId.Parse(usuarioId);
-                db.GuardarRecetaFav(idUsuario, recetaId);
-            }
-            else
-            {
+                ObjectId usuarioId = ObjectId.Parse(idUsuario);
+                db.GuardarRecetaFav(usuarioId, recetaId);
+           
                 return RedirectToAction("MisRecetasFavoritas"); 
-
-            }
 
         }
         return RedirectToAction("MisRecetasFavoritas"); 
@@ -155,16 +143,14 @@ public class UsuarioController : Controller
 
     public ActionResult MisRecetasFavoritas()
     {
+        var idUsuario = HttpContext.Session.GetString("UserId");
 
-        var usuarioId = HttpContext.Session.GetString("UserId");
-
-        if (usuarioId != null)
+        if (idUsuario != null)
         {
-            ObjectId idUsuario = ObjectId.Parse(usuarioId);
-            var usuario = db.ObtenerUsuarioPorId(idUsuario);
-            var recetasFavoritas = recetaCollection.ObtenerRecetasPorIds(usuario.RecetasFavoritas);
+            ObjectId usuarioId = ObjectId.Parse(idUsuario);
+            var usuario = db.ObtenerUsuarioPorId(usuarioId);
 
-            return View(recetasFavoritas);
+            return View(usuario.RecetasFavoritas);
         }
 
      return View(new List<Receta>()); 
