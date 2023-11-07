@@ -9,29 +9,41 @@
         <h2 class="mb-4 text-center">@ViewData["Title"]</h2>
         <form asp-action="Crear" method="post">
             <div class="mb-3">
-                <label asp-for="Titulo" class="form-label d-none">Titulo</label>
+                <label asp-for="Titulo" class="form-label">Titulo</label>
                 <input asp-for="Titulo" class="form-control p-2" placeholder="Titulo" />
                 <span asp-validation-for="Titulo" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="Descripcion" class="form-label d-none">Descripcion</label>
+                <label asp-for="Descripcion" class="form-label">Descripcion</label>
                 <input asp-for="Descripcion" class="form-control p-2" placeholder="Descripción" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="ListaIngredientes" class="form-label d-none">Ingredientes</label>
+                <label asp-for="ListaIngredientes" class="form-label">Ingredientes</label>
                 @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
                 {
                     <div class=" form-check form-check-inline">
                         <label for="@ingrediente.Id">
-                            <input type="checkbox" name="ids" value="@ingrediente.Id "  />
+                            <input type="checkbox" name="ids" value="@ingrediente.Id"  />
                             @ingrediente.Nombre
                         </label>
                     </div>
                 }
             </div>
             <div class="mb-3">
-                <label for="TipoDePlato" class="form-label d-none">Tipo de plato</label>
+                <label asp-for="PreferenciasAlimentarias" class="form-label">Preferencias Alimentarias</label>
+                @foreach (var preferencia in ViewBag.PreferenciasAlimentarias)
+                {
+                    <div class=" form-check form-check-inline">
+                        <label for="@preferencia.Id">
+                            <input type="checkbox" name="idsPreferencias" value="@preferencia.Id" />
+                            @preferencia.PreferenciaAlimentaria
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="TipoDePlato" class="form-label">Tipo de plato</label>
                 <select asp-for="TipoDePlato" class="form-control p-2">
                     @foreach (var tipo in Enum.GetValues(typeof(TipoDePlato)))
                     {
@@ -41,7 +53,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="PaisDeOrigen" class="form-label d-none">País de origen</label>
+                <label for="PaisDeOrigen" class="form-label">País de origen</label>
                 <select asp-for="PaisDeOrigen" class="form-control p-2">
                     @foreach (var pais in Enum.GetValues(typeof(PaisDeOrigen)))
                     {
@@ -51,7 +63,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="Dificultad" class="form-label d-none">Dificultad</label>
+                <label for="Dificultad" class="form-label">Dificultad</label>
                 <select asp-for="Dificultad" class="form-control p-2">
                     
                     @foreach (var dificultad in Enum.GetValues(typeof(Dificultad)))

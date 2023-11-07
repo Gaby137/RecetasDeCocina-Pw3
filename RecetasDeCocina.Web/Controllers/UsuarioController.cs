@@ -3,8 +3,6 @@ using MongoDB.Bson;
 using RecetasDeCocina.Data.Models;
 using RecetasDeCocina.Data.Repositories;
 using RecetasDeCocina.Web.Models;
-using MongoDB.Bson;
-using System.Diagnostics;
 
 namespace RecetasDeCocina.Web.Controllers;
 
@@ -12,6 +10,8 @@ public class UsuarioController : Controller
 {
     private IUsuarioCollection db = new UsuarioCollection();
     private IRecetaCollection recetaCollection = new RecetaCollection();
+    private IIngredienteCollection ingredientesCo = new IngredienteCollection();
+    private IPreferenciaCollection preferenciasCo = new PreferenciaCollection();
 
     public ActionResult Login()
     {
@@ -25,14 +25,14 @@ public class UsuarioController : Controller
         if (ModelState.IsValid)
         {
             // Buscar al usuario por su correo electrónico en la base de datos
-            var usuario = db.BuscarPorCorreo(model.Correo);x
+            var usuario = db.BuscarPorCorreo(model.Correo);
             if (usuario != null && usuario.Contrasena == model.Contrasena)
             {
                 // Autenticación exitosa, establecer una sesión de usuario (puedes usar cookies, por ejemplo)
                 // Aquí deberías implementar la lógica para establecer la sesión de usuario
                 HttpContext.Session.SetString("UserId", usuario.Id.ToString());
                 // Redirigir al usuario a la página de inicio
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Listar", "Receta");
             }
             else
             {
@@ -45,66 +45,38 @@ public class UsuarioController : Controller
         return View(model);
     }
 
-    public ActionResult Details(int id)
-    {
-        return View();
-    }
-
     public ActionResult Crear()
     {
-        return View();
+        List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
+        ViewBag.IngredientesDisponibles = ingredientesDisponibles;
+        List<Preferencia> preferenciasAlimentarias = preferenciasCo.Listar();
+        ViewBag.preferenciasAlimentarias = preferenciasAlimentarias;
+        return View(new Usuario());
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Crear(Usuario usuario)
+    public ActionResult Crear(Usuario usuario, string[] ids, string[] idsPreferencias)
     {
         try
         {
-            if (ModelState.IsValid)
+            usuario.AlimentosAlergicos = new List<Ingrediente>();
+            usuario.PreferenciasAlimentarias = new List<Preferencia>();
+
+            foreach (var id in ids)
             {
-                db.Crear(usuario); // Supongamos que tienes un método "Crear" en tu base de datos que agrega un usuario a MongoDB
-                return RedirectToAction(nameof(Login));
+                Ingrediente ingrediente = ingredientesCo.BuscarIngredienteConId(ObjectId.Parse(id));
+                usuario.AlimentosAlergicos.Add(ingrediente);
             }
-            return View(usuario);
-        }
-        catch
-        {
-            return View();
-        }
-    }
 
-    public ActionResult Edit(int id)
-    {
-        return View();
-    }
+            foreach (var id in idsPreferencias)
+            {
+                Preferencia preferencia = preferenciasCo.BuscarPreferenciaConId(ObjectId.Parse(id));
+                usuario.PreferenciasAlimentarias.Add(preferencia);
+            }
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, IFormCollection collection)
-    {
-        try
-        {
-            return RedirectToAction(nameof(Index));
-        }
-        catch
-        {
-            return View();
-        }
-    }
-
-    public ActionResult Delete(int id)
-    {
-        return View();
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
-    {
-        try
-        {
-            return RedirectToAction(nameof(Index));
+            db.Crear(usuario); // Supongamos que tienes un método "Crear" en tu base de datos que agrega un usuario a MongoDB
+            return RedirectToAction(nameof(Login));
         }
         catch
         {
@@ -140,6 +112,6 @@ public class UsuarioController : Controller
             return View(usuario.RecetasFavoritas);
         }
 
-        return View(new List<Receta>()); 
+        return RedirectToAction("Login"); 
     }    
 }

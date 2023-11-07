@@ -26,10 +26,10 @@
                 <td>@receta.Descripcion</td>
                 <td>
                     <ul>
-                        @foreach (var ingrediente in @receta.ListarIngredientes)
+                        @foreach (var ingrediente in @receta.ListaIngredientes)
                         {
                             <li>
-                                @ingrediente.NombreDelIngrediente
+                                @ingrediente.Nombre
                             </li>
                         }
                     </ul>
@@ -37,9 +37,6 @@
                 <td>@receta.TipoDePlato</td>
                 <td>@receta.PaisDeOrigen</td>
                 <td>@receta.Dificultad</td>
-          
-
-
             </tr>
         }
     </tbody>

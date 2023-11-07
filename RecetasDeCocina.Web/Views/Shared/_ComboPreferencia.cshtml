@@ -1,0 +1,23 @@
+﻿@using RecetasDeCocina.Data.Models
+
+<div class="form-check form-check-inline">
+    @foreach (var preferencia in ViewBag.PreferenciasAlimentarias)
+    {
+        bool estaSeleccionado = false;
+        @foreach (var preferenciaSeleccionada in ViewBag.PreferenciasSeleccionadas)
+        {
+            if (preferenciaSeleccionada.ToString() == preferencia.Id.ToString())
+            {
+                estaSeleccionado = true;
+                <input type="checkbox" name="idsPreferencias" value="@preferencia.Id" checked />
+                @preferencia.PreferenciaAlimentaria
+            }
+        }
+        if (!estaSeleccionado)
+        {
+            <input type="checkbox" name="idsPreferencias" value="@preferencia.Id" />
+            @preferencia.PreferenciaAlimentaria
+        }
+    }
+
+</div>

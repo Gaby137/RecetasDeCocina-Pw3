@@ -43,6 +43,7 @@ public class Receta
     public string Titulo { get; set; }
     public string Descripcion { get; set; }
     public List<Ingrediente> ListaIngredientes { get; set; }
+    public List<Preferencia> PreferenciasAlimentarias { get; set; }
     public TipoDePlato TipoDePlato { get; set; }
     public PaisDeOrigen PaisDeOrigen { get; set; }
     public Dificultad Dificultad { get; set; }

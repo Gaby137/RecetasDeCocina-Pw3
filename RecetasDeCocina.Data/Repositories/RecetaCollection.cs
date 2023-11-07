@@ -8,8 +8,9 @@ public interface IRecetaCollection
 {
     void Crear(Receta receta);
     List<Receta> Listar();
-    List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, List<Ingrediente>? ingredientes);
-
+    List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, List<Ingrediente>? ingredientes, List<Preferencia>? preferencias);
+    Receta BuscarRecetaPorId(ObjectId id);
+    bool RecetaContieneIngrediente(Receta? receta, List<Ingrediente>? ingredientes);
 }
 
 public class RecetaCollection : IRecetaCollection
@@ -31,8 +32,13 @@ public class RecetaCollection : IRecetaCollection
     {
         return Collection.Find(new BsonDocument()).ToList();
     }
-    public List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, List<Ingrediente>? ingredientes)
 
+    public Receta BuscarRecetaPorId(ObjectId id)
+    {
+        return Collection.Find(r => r.Id == id).FirstOrDefault();
+    }
+
+    public List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, List<Ingrediente>? ingredientes, List<Preferencia>? preferencias)
     {
         var recetas = Listar();
 
@@ -56,6 +62,16 @@ public class RecetaCollection : IRecetaCollection
             recetas = recetas.Where(r => ingredientes.All(i => r.ListaIngredientes.Any(li => li.Id == i.Id))).ToList();
         }
 
+        if (preferencias != null && preferencias.Count > 0)
+        {
+            recetas = recetas.Where(r => preferencias.All(p => r.PreferenciasAlimentarias.Any(pa => pa.Id == p.Id))).ToList();
+        }
+
         return recetas;
+    }
+
+    public bool RecetaContieneIngrediente(Receta? receta, List<Ingrediente>? ingredientes)
+    {
+        return receta.ListaIngredientes.Any(ingrediente => ingredientes.Any(i => i.Id == ingrediente.Id));
     }
 }
