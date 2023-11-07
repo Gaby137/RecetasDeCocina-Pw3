@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using RecetasDeCocina.Data.Models;
 using RecetasDeCocina.Data.Repositories;
 using RecetasDeCocina.Web.Models;
+using MongoDB.Bson;
 using System.Diagnostics;
 
 namespace RecetasDeCocina.Web.Controllers;
 
 public class UsuarioController : Controller
 {
-
     private IUsuarioCollection db = new UsuarioCollection();
+    private IRecetaCollection recetaCollection = new RecetaCollection();
 
     public ActionResult Login()
     {
-
         return View();
     }
 
@@ -24,13 +25,12 @@ public class UsuarioController : Controller
         if (ModelState.IsValid)
         {
             // Buscar al usuario por su correo electrónico en la base de datos
-            var usuario = db.BuscarPorCorreo(model.Correo);
-
+            var usuario = db.BuscarPorCorreo(model.Correo);x
             if (usuario != null && usuario.Contrasena == model.Contrasena)
             {
                 // Autenticación exitosa, establecer una sesión de usuario (puedes usar cookies, por ejemplo)
                 // Aquí deberías implementar la lógica para establecer la sesión de usuario
-
+                HttpContext.Session.SetString("UserId", usuario.Id.ToString());
                 // Redirigir al usuario a la página de inicio
                 return RedirectToAction("Index", "Home");
             }
@@ -50,12 +50,10 @@ public class UsuarioController : Controller
         return View();
     }
 
-
     public ActionResult Crear()
     {
         return View();
     }
-
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -76,12 +74,10 @@ public class UsuarioController : Controller
         }
     }
 
-
     public ActionResult Edit(int id)
     {
         return View();
     }
-
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -97,12 +93,10 @@ public class UsuarioController : Controller
         }
     }
 
-
     public ActionResult Delete(int id)
     {
         return View();
     }
-
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -117,8 +111,35 @@ public class UsuarioController : Controller
             return View();
         }
     }
+    
+    [HttpPost]
+    public ActionResult GuardarRecetaFav(string idReceta)
+    {
+        var idUsuario = HttpContext.Session.GetString("UserId");
 
+        if (idUsuario != null)
+        {         
+                ObjectId recetaId = ObjectId.Parse(idReceta);
 
+                ObjectId usuarioId = ObjectId.Parse(idUsuario);
+                db.GuardarRecetaFav(usuarioId, recetaId);
+           
+                return RedirectToAction("MisRecetasFavoritas"); 
+        }
+        return RedirectToAction("MisRecetasFavoritas"); 
+    }
 
+    public ActionResult MisRecetasFavoritas()
+    {
+        var idUsuario = HttpContext.Session.GetString("UserId");
 
+        if (idUsuario != null)
+        {
+            ObjectId usuarioId = ObjectId.Parse(idUsuario);
+            var usuario = db.ObtenerUsuarioPorId(usuarioId);
+            return View(usuario.RecetasFavoritas);
+        }
+
+        return View(new List<Receta>()); 
+    }    
 }

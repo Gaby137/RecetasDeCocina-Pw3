@@ -1,11 +1,9 @@
-﻿@using RecetasDeCocina.Data.Models
+@using RecetasDeCocina.Data.Models
 @model List<Receta>
 
 @{
     ViewData["Title"] = "Listado de Recetas";
 }
-
-<!--<h2>@ViewData["Title"]</h2>-->
 
 <div class="container w-75 my-5 px-0">
     <div>
@@ -25,15 +23,12 @@
                         <partial name="/Views/Shared/_ComboDificultad.cshtml">
                     </div>
                 </div>
-
                 <div class="mb-3 mt-3">
                     <partial name="/Views/Shared/_ComboIngrediente.cshtml">
                 </div>
-
                 <input type="submit" value="Filtrar" class="btn btn-dark fw-bold text-light p-1 sing-in rounded w-25 mb-3" />
             </div>
         </form>
-
             <div class="form-horizontal">
                 <table class="table table-hover">
                         <thead class="thead-dark">
@@ -72,4 +67,3 @@
             </div>
     </div>
 </div>
-

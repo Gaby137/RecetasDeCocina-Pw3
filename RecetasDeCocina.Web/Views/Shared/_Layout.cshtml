@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,7 +37,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Receta" asp-action="Listar">Listar Recetas</a>
                         </li>
-                       
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="RecetasPersonalizadas" asp-action="GenerarRecetasPersonalizadas">Generar Recetas Personalizadas</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="MisRecetasFavoritas">Recetas favoritas</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +51,6 @@
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container text-center">
             &copy; 2023 - Recetas de cocina

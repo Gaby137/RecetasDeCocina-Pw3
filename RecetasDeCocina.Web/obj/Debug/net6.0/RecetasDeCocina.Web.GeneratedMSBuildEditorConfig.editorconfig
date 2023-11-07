@@ -1,0 +1,89 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = RecetasDeCocina.Web
+build_property.RootNamespace = RecetasDeCocina.Web
+build_property.ProjectDir = D:\Cosas de gaby\Practica C Sharp\RecetasDeCocina-Pw3\RecetasDeCocina.Web\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Cosas de gaby\Practica C Sharp\RecetasDeCocina-Pw3\RecetasDeCocina.Web
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Ingrediente/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVkaWVudGVcQ3JlYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Ingrediente/Listar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVkaWVudGVcTGlzdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/RecetasPersonalizadas/GenerarRecetasPersonalizadas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZXRhc1BlcnNvbmFsaXphZGFzXEdlbmVyYXJSZWNldGFzUGVyc29uYWxpemFkYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Receta/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZXRhXENyZWFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Receta/Listar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZXRhXExpc3Rhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Receta/SeleccionarIngredientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZXRhXFNlbGVjY2lvbmFySW5ncmVkaWVudGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Shared/_ComboDificultad.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db21ib0RpZmljdWx0YWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Shared/_ComboPais.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db21ib1BhaXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Shared/_ComboTipoDeComida.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db21ib1RpcG9EZUNvbWlkYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Usuario/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Usuario/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Cosas de gaby/Practica C Sharp/RecetasDeCocina-Pw3/RecetasDeCocina.Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-kxyaobsxed
