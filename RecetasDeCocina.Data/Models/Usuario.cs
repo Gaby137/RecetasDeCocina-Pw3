@@ -42,7 +42,15 @@ public  class Usuario
     [Required(ErrorMessage = "La contraseña es obligatoria.")]
     [StringLength(100, MinimumLength = 6, ErrorMessage = "La contraseña debe tener al menos 6 caracteres.")]
     public string Contrasena { get; set; }
+
+    public List<Receta> RecetasFavoritas { get; set; }
+
     public PreferenciasAlimentarias PreferenciasAlimentarias {  get; set; }
     public AlimentosAlergicos AlimentosAlergicos { get; set; }
+
+    public Usuario()
+    {
+        RecetasFavoritas = new List<Receta>();
+    }
 
 }
