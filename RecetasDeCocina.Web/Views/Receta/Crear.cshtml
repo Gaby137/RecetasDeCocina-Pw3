@@ -1,60 +1,68 @@
-﻿﻿@using RecetasDeCocina.Data.Models
+@using RecetasDeCocina.Data.Models
 @model Receta
 @{
     ViewData["Title"] = "Creación de Receta";
 }
 
-<h2>@ViewData["Title"]</h2>
-
-<form asp-action="Crear" method="post">
-    <div class="form-group">
-        <label asp-for="Titulo">Titulo</label>
-        <input asp-for="Titulo" class="form-control" />
-        <span asp-validation-for="Titulo" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Descripcion">Descripcion</label>
-        <input asp-for="Descripcion" class="form-control" />
-        <span asp-validation-for="Descripcion" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="ListaIngredientes">Ingredientes</label>
-        @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
-        {
-            <div>
-                <label for="@ingrediente.Id">
-                    <input type="checkbox" name="ids" value="@ingrediente.Id" />
-                    @ingrediente.Nombre
-                </label>
+<div class="container w-50 my-5 px-0">
+    <div>
+        <h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+        <form asp-action="Crear" method="post">
+            <div class="mb-3">
+                <label asp-for="Titulo" class="form-label d-none">Titulo</label>
+                <input asp-for="Titulo" class="form-control p-2" placeholder="Titulo" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
             </div>
-        }
+            <div class="mb-3">
+                <label asp-for="Descripcion" class="form-label d-none">Descripcion</label>
+                <input asp-for="Descripcion" class="form-control p-2" placeholder="Descripción" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ListaIngredientes" class="form-label d-none">Ingredientes</label>
+                @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+                {
+                    <div class=" form-check form-check-inline">
+                        <label for="@ingrediente.Id">
+                            <input type="checkbox" name="ids" value="@ingrediente.Id "  />
+                            @ingrediente.Nombre
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="TipoDePlato" class="form-label d-none">Tipo de plato</label>
+                <select asp-for="TipoDePlato" class="form-control p-2">
+                    @foreach (var tipo in Enum.GetValues(typeof(TipoDePlato)))
+                    {
+                        <option value="@tipo">@tipo</option>
+                    }
+                    <option value="" disabled selected>Tipo</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="PaisDeOrigen" class="form-label d-none">País de origen</label>
+                <select asp-for="PaisDeOrigen" class="form-control p-2">
+                    @foreach (var pais in Enum.GetValues(typeof(PaisDeOrigen)))
+                    {
+                        <option value="@pais">@pais</option>
+                    }
+                    <option value="" disabled selected>País</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="Dificultad" class="form-label d-none">Dificultad</label>
+                <select asp-for="Dificultad" class="form-control p-2">
+                    
+                    @foreach (var dificultad in Enum.GetValues(typeof(Dificultad)))
+                    {
+
+                        <option value="@dificultad">@dificultad</option>
+                    }
+                    <option value="" disabled selected>Dificultad</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-dark fw-bold text-light p-2 sing-in rounded w-100">Crear Receta</button>
+        </form>
     </div>
-    <div class="form-group">
-        <label for="TipoDePlato">Tipo de Plato</label>
-        <select asp-for="TipoDePlato" class="form-control">
-            @foreach (var tipo in Enum.GetValues(typeof(TipoDePlato)))
-            {
-                <option value="@tipo">@tipo</option>
-            }
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="PaisDeOrigen">País de origen</label>
-        <select asp-for="PaisDeOrigen" class="form-control">
-            @foreach (var pais in Enum.GetValues(typeof(PaisDeOrigen)))
-            {
-                <option value="@pais">@pais</option>
-            }
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="Dificultad">Dificultad</label>
-        <select asp-for="Dificultad" class="form-control">
-            @foreach (var dificultad in Enum.GetValues(typeof(Dificultad)))
-            {
-                <option value="@dificultad">@dificultad</option>
-            }
-        </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Crear Receta</button>
-</form>
+</div>

@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using NuGet.Packaging.Signing;
 using RecetasDeCocina.Data.Models;
 using RecetasDeCocina.Data.Repositories;
+using System.Collections.Generic;
 
 namespace RecetasDeCocina.Web.Controllers;
 
@@ -55,13 +56,18 @@ public class RecetaController : Controller
     }
 
     private void AgregarFiltrosAlViewBag(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, string[]? idsIngredientes)
-    {
+
+    {      
+        List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
+
         ViewBag.Tipos = Enum.GetValues(typeof(TipoDePlato)).Cast<TipoDePlato>().ToList();
         ViewBag.TipoSeleccionado = tipoDePlato;
         ViewBag.Paises = Enum.GetValues(typeof(PaisDeOrigen)).Cast<PaisDeOrigen>().ToList();
         ViewBag.PaisSeleccionado = paisDeOrigen;
         ViewBag.Dificultades = Enum.GetValues(typeof(Dificultad)).Cast<Dificultad>().ToList();
         ViewBag.DificultadSeleccionada = dificultad;
+
         ViewBag.IngredientesSeleccionados = idsIngredientes;
+
     }
 }

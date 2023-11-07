@@ -1,7 +1,6 @@
 ﻿@using RecetasDeCocina.Data.Models
 
-<div>
-    <p class="mt-1 mb-1">Ingredientes</p>
+<div class="form-check form-check-inline">
     @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
     {
         bool estaSeleccionado = false;
@@ -20,4 +19,5 @@
             @ingrediente.Nombre
         }
     }
+
 </div>

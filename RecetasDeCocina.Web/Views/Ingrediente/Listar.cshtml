@@ -5,26 +5,32 @@
     ViewData["Title"] = "Listado de Ingredientes";
 }
 
-<h2>@ViewData["Title"]</h2>
+<!--<h2>@ViewData["Title"]</h2>-->
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Categoría</th>
-            <th>Descripción</th>
-            <th>Gramos</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var ingrediente in Model)
-        {
-            <tr>
-                <td>@ingrediente.Nombre</td>
-                <td>@ingrediente.Categoria</td>
-                <td>@ingrediente.Descripcion</td>
-                <td>@ingrediente.Gramos</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="container w-75 my-5 px-0">
+    <div>
+        <h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Descripción</th>
+                    <th>Gramos</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ingrediente in Model)
+                {
+                    <tr>
+                        <td>@ingrediente.Nombre</td>
+                        <td>@ingrediente.Categoria</td>
+                        <td>@ingrediente.Descripcion</td>
+                        <td>@ingrediente.Gramos g</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

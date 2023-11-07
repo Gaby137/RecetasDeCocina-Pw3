@@ -5,56 +5,65 @@
     ViewData["Title"] = "Listado de Recetas";
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="container w-75 my-5 px-0">
+    <div>
 
-<form action="/Receta/Listar" method="post">
-    <div class="form-horizontal">
-        <hr />
-        <partial name="/Views/Shared/_ComboTipoDeComida.cshtml">
-        <partial name="/Views/Shared/_ComboPais.cshtml">
-        <partial name="/Views/Shared/_ComboDificultad.cshtml">
-        <partial name="/Views/Shared/_ComboIngrediente.cshtml">
-        <input type="submit" value="Filtrar" />
-    </div>
-</form>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Descripción</th>
-                        <th>Ingredientes</th>
-                        <th>Tipo</th>
-                        <th>País</th>
-                        <th>Dificultad</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var receta in Model)
-                    {
-                        <tr>
-                            <td>@receta.Titulo</td>
-                            <td>@receta.Descripcion</td>
-                            <td>
-                                <ul>
-                                    @foreach (var ingrediente in @receta.ListaIngredientes)
-                                    {
-                                        <li>
-                                            @ingrediente.Nombre
-                                        </li>
-                                    }
-                                </ul>
-                            </td>
-                            <td>@receta.TipoDePlato</td>
-                            <td>@receta.PaisDeOrigen</td>
-                            <td>@receta.Dificultad</td>
+        <h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+
+        <form action="/Receta/Listar" method="post">
+            <div class="text-center">
+                <div class="row justify-content-center">
+                    <div class="form-group col-md-2">
+                        <partial name="/Views/Shared/_ComboTipoDeComida.cshtml">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <partial name="/Views/Shared/_ComboPais.cshtml">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <partial name="/Views/Shared/_ComboDificultad.cshtml">
+                    </div>
+                </div>
+                <div class="mb-3 mt-3">
+                    <partial name="/Views/Shared/_ComboIngrediente.cshtml">
+                </div>
+                <input type="submit" value="Filtrar" class="btn btn-dark fw-bold text-light p-1 sing-in rounded w-25 mb-3" />
+            </div>
+        </form>
+            <div class="form-horizontal">
+                <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Título</th>
+                                <th>Descripción</th>
+                                <th>Ingredientes</th>
+                                <th>Tipo</th>
+                                <th>País</th>
+                                <th>Dificultad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var receta in Model)
+                            {
+                                <tr>
+                                    <td>@receta.Titulo</td>
+                                    <td>@receta.Descripcion</td>
                                     <td>
-                                        <form action="/Usuario/GuardarRecetaFav" method="post">
-                                            <input type="hidden" name="idReceta" value="@receta.Id" />
-                                            <button type="submit" class="btn btn-primary">Agregar a favoritas</button>
-                                        </form>
+                                        <ul>
+                                        @foreach (var ingrediente in @receta.ListaIngredientes)
+                                            {
+                                                <li>
+                                                @ingrediente.Nombre
+                                                </li>
+                                            }
+                                        </ul>
                                     </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                                    <td>@receta.TipoDePlato</td>
+                                    <td>@receta.PaisDeOrigen</td>
+                                    <td>@receta.Dificultad</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+            </div>
+    </div>
+</div>
