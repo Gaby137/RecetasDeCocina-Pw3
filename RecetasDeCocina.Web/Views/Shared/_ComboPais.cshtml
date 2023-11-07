@@ -1,0 +1,16 @@
+﻿@using RecetasDeCocina.Data.Models
+
+<select id="PaisDeOrigen" name="PaisDeOrigen">
+    <option>País</option>
+    @foreach (PaisDeOrigen item in ViewBag.Paises)
+    {
+        if (((PaisDeOrigen?)ViewBag.PaisSeleccionado).HasValue && ((PaisDeOrigen?)ViewBag.PaisSeleccionado).Value == item)
+        {
+            <option value="@item" selected>@item</option>
+        }
+        else
+        {
+            <option value="@item">@item</option>
+        }
+    }
+</select>
