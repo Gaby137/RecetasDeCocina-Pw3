@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using RecetasDeCocina.Data.Models;
 using RecetasDeCocina.Data.Repositories;
 using RecetasDeCocina.Web.Models;
@@ -10,6 +11,7 @@ public class UsuarioController : Controller
 {
 
     private IUsuarioCollection db = new UsuarioCollection();
+    private IRecetaCollection recetaCollection = new RecetaCollection();
 
     public ActionResult Login()
     {
@@ -30,6 +32,8 @@ public class UsuarioController : Controller
             {
                 // Autenticación exitosa, establecer una sesión de usuario (puedes usar cookies, por ejemplo)
                 // Aquí deberías implementar la lógica para establecer la sesión de usuario
+                HttpContext.Session.SetString("UserId", usuario.Id.ToString());
+       
 
                 // Redirigir al usuario a la página de inicio
                 return RedirectToAction("Index", "Home");
@@ -118,7 +122,40 @@ public class UsuarioController : Controller
         }
     }
 
+    [HttpPost]
+    public ActionResult GuardarRecetaFav(string idReceta)
+    {
+        var idUsuario = HttpContext.Session.GetString("UserId");
 
+        if (idUsuario != null)
+        {         
+                ObjectId recetaId = ObjectId.Parse(idReceta);
 
+                ObjectId usuarioId = ObjectId.Parse(idUsuario);
+                db.GuardarRecetaFav(usuarioId, recetaId);
+           
+                return RedirectToAction("MisRecetasFavoritas"); 
 
+        }
+        return RedirectToAction("MisRecetasFavoritas"); 
+
+    }
+
+    public ActionResult MisRecetasFavoritas()
+    {
+        var idUsuario = HttpContext.Session.GetString("UserId");
+
+        if (idUsuario != null)
+        {
+            ObjectId usuarioId = ObjectId.Parse(idUsuario);
+            var usuario = db.ObtenerUsuarioPorId(usuarioId);
+
+            return View(usuario.RecetasFavoritas);
+        }
+
+     return View(new List<Receta>()); 
+
+    }
+
+    
 }

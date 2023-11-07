@@ -10,7 +10,6 @@ public interface IRecetaCollection {
     List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, List<Ingrediente>? ingredientes);
 }
 
-
 public class RecetaCollection : IRecetaCollection
 {
     internal MongoDBRepository _repository = new MongoDBRepository();
@@ -20,7 +19,6 @@ public class RecetaCollection : IRecetaCollection
     {
         Collection = _repository.db.GetCollection<Receta>("Recetas");
     }
-
 
     public void Crear(Receta receta)
     {
@@ -57,5 +55,12 @@ public class RecetaCollection : IRecetaCollection
         }
 
         return recetas;
+
+    }
+    
+    public Receta BuscarRecetaPorId(ObjectId id)
+    {
+        return Collection.Find(r => r.Id == id).FirstOrDefault();
+
     }
 }
