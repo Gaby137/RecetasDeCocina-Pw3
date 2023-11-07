@@ -8,13 +8,13 @@
 
 <form asp-action="Crear" method="post">
     <div class="form-group">
-        <label asp-for="NombreDelIngrediente">Nombre del Ingrediente</label>
-        <input asp-for="NombreDelIngrediente" class="form-control" />
-        <span asp-validation-for="NombreDelIngrediente" class="text-danger"></span>
+        <label asp-for="Nombre">Nombre del Ingrediente</label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="CategoriaDelIngrediente">Categoria Del Ingrediente</label>
-        <select asp-for="CategoriaDelIngrediente" class="form-control">
+        <label asp-for="Categoria">Categoria Del Ingrediente</label>
+        <select asp-for="Categoria" class="form-control">
             <option value="AceitesyGrasas">Aceites y Grasas</option>
             <option value="CarneyPescado">Carne y Pescado</option>
             <option value="CerealesFrutosSecosyproductosparahornear">Cereales, frutos secos y productos para hornear</option>

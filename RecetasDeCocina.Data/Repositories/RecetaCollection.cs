@@ -7,16 +7,11 @@ namespace RecetasDeCocina.Data.Repositories;
 public interface IRecetaCollection {
     void Crear(Receta receta);
     List<Receta> Listar();
-    List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad);
-
-    Receta BuscarRecetaPorId(ObjectId id);
-
+    List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, List<Ingrediente>? ingredientes);
 }
-
 
 public class RecetaCollection : IRecetaCollection
 {
-
     internal MongoDBRepository _repository = new MongoDBRepository();
     private IMongoCollection<Receta> Collection;
 
@@ -25,7 +20,6 @@ public class RecetaCollection : IRecetaCollection
         Collection = _repository.db.GetCollection<Receta>("Recetas");
     }
 
-
     public void Crear(Receta receta)
     {
         Collection.InsertOneAsync(receta);
@@ -33,11 +27,10 @@ public class RecetaCollection : IRecetaCollection
 
     public List<Receta> Listar()
     {
-        var recetas = Collection.Find(new BsonDocument()).ToList();
-        return recetas;
+        return Collection.Find(new BsonDocument()).ToList();
     }
 
-    public List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad)
+    public List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, List<Ingrediente>? ingredientes)
     {
         var recetas = Listar();
 
@@ -56,14 +49,18 @@ public class RecetaCollection : IRecetaCollection
             recetas = recetas.Where(r => r.Dificultad == dificultad.Value).ToList();
         }
 
+        if (ingredientes != null && ingredientes.Count > 0)
+        {
+            recetas = recetas.Where(r => ingredientes.All(i => r.ListaIngredientes.Any(li => li.Id == i.Id))).ToList();
+        }
+
         return recetas;
 
     }
+    
     public Receta BuscarRecetaPorId(ObjectId id)
     {
         return Collection.Find(r => r.Id == id).FirstOrDefault();
 
     }
-
-
 }

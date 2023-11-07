@@ -1,0 +1,23 @@
+﻿@using RecetasDeCocina.Data.Models
+
+<div>
+    <p class="mt-1 mb-1">Ingredientes</p>
+    @foreach (var ingrediente in ViewBag.IngredientesDisponibles)
+    {
+        bool estaSeleccionado = false;
+        @foreach (var ingredienteSeleccionado in ViewBag.IngredientesSeleccionados)
+        {
+            if (ingredienteSeleccionado.ToString() == ingrediente.Id.ToString())
+            {
+                estaSeleccionado = true;
+                <input type="checkbox" name="idsIngredientes" value="@ingrediente.Id" checked />
+                @ingrediente.Nombre
+            }
+        }
+        if (!estaSeleccionado)
+        {
+            <input type="checkbox" name="idsIngredientes" value="@ingrediente.Id" />
+            @ingrediente.Nombre
+        }
+    }
+</div>
