@@ -12,22 +12,16 @@ namespace RecetasDeCocina.Data.Repositories;
 public interface IUsuarioCollection
 {
     void Crear(Usuario usuario);
-
     List<Usuario> Listar();
-
     Usuario ObtenerUsuarioPorId(ObjectId id);
     Usuario BuscarPorCorreo(string correo);
-
     void GuardarRecetaFav(ObjectId usuarioId, ObjectId recetaId);
-
 }
-
 
 public class UsuarioCollection : IUsuarioCollection
 {
     internal MongoDBRepository _repository = new MongoDBRepository();
     private IMongoCollection<Usuario> Collection;
-
     private IRecetaCollection _recetaCollection= new RecetaCollection();
 
     public UsuarioCollection()
@@ -50,11 +44,10 @@ public class UsuarioCollection : IUsuarioCollection
         return Collection.Find(u => u.Id == id).FirstOrDefault();
 
     }
+
     public Usuario BuscarPorCorreo(string correo)
     {
         var filter = Builders<Usuario>.Filter.Eq(u => u.Correo, correo);
-
-        // Realizar la consulta en la base de datos
         var usuario = Collection.Find(filter).FirstOrDefault();
 
         return usuario;
@@ -71,6 +64,4 @@ public class UsuarioCollection : IUsuarioCollection
            Collection.ReplaceOne(d => d.Id == usuarioId, usuario);
         }
     }
-
-   
 }

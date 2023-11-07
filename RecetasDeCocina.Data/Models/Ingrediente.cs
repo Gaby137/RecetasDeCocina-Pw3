@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace RecetasDeCocina.Data.Models;
 
-public  class Ingrediente
+public class Ingrediente
 {
     [BsonId]
     public ObjectId Id { get; set; }

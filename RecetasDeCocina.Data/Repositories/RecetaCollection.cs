@@ -4,7 +4,8 @@ using RecetasDeCocina.Data.Models;
 
 namespace RecetasDeCocina.Data.Repositories;
 
-public interface IRecetaCollection {
+public interface IRecetaCollection
+{
     void Crear(Receta receta);
     List<Receta> Listar();
     List<Receta> Filtrar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, List<Ingrediente>? ingredientes);
@@ -55,12 +56,5 @@ public class RecetaCollection : IRecetaCollection
         }
 
         return recetas;
-
-    }
-    
-    public Receta BuscarRecetaPorId(ObjectId id)
-    {
-        return Collection.Find(r => r.Id == id).FirstOrDefault();
-
     }
 }

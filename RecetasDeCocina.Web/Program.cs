@@ -1,10 +1,11 @@
 using RecetasDeCocina.Data.Repositories;
+using RecetasDeCocina.Logica.Servicios;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<MongoDBRepository>();
+builder.Services.AddScoped<IRecetasPersonalizadasServicio, RecetasPersonalizadasServicio>();
 builder.Services.AddSession();
 builder.Services.AddDistributedMemoryCache();
 
@@ -13,11 +14,9 @@ var app = builder.Build();
 // Activar sesiones
 app.UseSession();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -26,6 +25,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Middleware de autenticación
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -1,4 +1,4 @@
-﻿@using RecetasDeCocina.Data.Models
+@using RecetasDeCocina.Data.Models
 @model List<Receta>
 
 @{
@@ -14,11 +14,9 @@
         <partial name="/Views/Shared/_ComboPais.cshtml">
         <partial name="/Views/Shared/_ComboDificultad.cshtml">
         <partial name="/Views/Shared/_ComboIngrediente.cshtml">
-            <input type="submit" value="Filtrar" />
+        <input type="submit" value="Filtrar" />
     </div>
-
 </form>
-
             <table class="table">
                 <thead>
                     <tr>
@@ -55,14 +53,8 @@
                                             <input type="hidden" name="idReceta" value="@receta.Id" />
                                             <button type="submit" class="btn btn-primary">Agregar a favoritas</button>
                                         </form>
-
                                     </td>
-                        
-
                         </tr>
                     }
                 </tbody>
             </table>
-
-
-

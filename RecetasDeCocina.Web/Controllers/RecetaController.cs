@@ -16,7 +16,7 @@ public class RecetaController : Controller
         List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
 
         ViewBag.IngredientesDisponibles = ingredientesDisponibles;
-        
+
         return View(new Receta());
     }
 
@@ -25,21 +25,21 @@ public class RecetaController : Controller
     public ActionResult Crear(Receta receta, string[] ids)
     {
         receta.ListaIngredientes = new List<Ingrediente>();
-        
+
         foreach (var id in ids)
         {
             Ingrediente ingrediente = ingredientesCo.BuscarIngredienteConId(ObjectId.Parse(id));
             receta.ListaIngredientes.Add(ingrediente);
         }
-        
+
         db.Crear(receta);
-        
+
         return RedirectToAction(nameof(Listar));
     }
 
     public ActionResult Listar(TipoDePlato? tipoDePlato, PaisDeOrigen? paisDeOrigen, Dificultad? dificultad, string[]? idsIngredientes)
     {
-        List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();  
+        List<Ingrediente> ingredientesDisponibles = ingredientesCo.Listar();
         ViewBag.IngredientesDisponibles = ingredientesDisponibles;
         List<Ingrediente> ingredientesSeleccionados = new List<Ingrediente>();
         foreach (var id in idsIngredientes)

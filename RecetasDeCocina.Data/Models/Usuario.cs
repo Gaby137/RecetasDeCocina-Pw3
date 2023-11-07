@@ -26,7 +26,7 @@ public enum AlimentosAlergicos
     LECHE
 }
 
-public  class Usuario
+public  class Usuario 
 {
     [BsonId]
     public ObjectId Id { get; set; }
